@@ -1,21 +1,35 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./page/Home";
-import Login from "./page/Login";
-import Signup from "./page/Signup";
+import { lazy, Suspense } from "react";
+import Loader from "./component/Loader";
 
+const Home = lazy(() => import("./page/Home"));
+const Login = lazy(() => import("./page/Login"));
+const Signup = lazy(() => import("./page/Signup"));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home/>,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Home />
+      </Suspense>
+    ),
   },
   {
     path: "/login",
-    element: <Login/>,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Login />
+      </Suspense>
+    ),
   },
   {
     path: "/signup",
-    element: <Signup/>,
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Signup />
+      </Suspense>
+    ),
   },
 ]);
 
