@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Loader from "./component/Loader";
+import Cart from "./component/Cart";
 
 const Home = lazy(() => import("./page/Home"));
 const Login = lazy(() => import("./page/Login"));
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
         <Home />
       </Suspense>
     ),
+
   },
   {
     path: "/login",
@@ -31,6 +33,15 @@ const router = createBrowserRouter([
       </Suspense>
     ),
   },
+  {
+    path: "/cart",
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Cart />
+      </Suspense>
+    ),
+  },
+  
 ]);
 
 export function App() {

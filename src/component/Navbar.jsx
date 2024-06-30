@@ -14,12 +14,17 @@ import {
 } from "@heroicons/react/24/outline";
 import logo from '../assets/logo.svg'
 import { navigation } from "../utils";
+import { useNavigate } from "react-router-dom";
+
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const Navbar = () => {
+
+  const navigate=useNavigate()
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -70,6 +75,7 @@ const Navbar = () => {
                 <button
                   type="button"
                   className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    onClick={()=>navigate('/cart')}
                 >
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">View notifications</span>
