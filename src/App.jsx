@@ -1,11 +1,16 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Loader from "./component/Loader";
-import Cart from "./component/Cart";
+
+
+
 
 const Home = lazy(() => import("./page/Home"));
 const Login = lazy(() => import("./page/Login"));
 const Signup = lazy(() => import("./page/Signup"));
+const Checkout = lazy(() => import("./page/Checkout"));
+const ProductDetails = lazy(() => import("./page/ProductDetail"));
+const Cart = lazy(() => import("./component/Cart"));
 
 const router = createBrowserRouter([
   {
@@ -38,6 +43,30 @@ const router = createBrowserRouter([
     element: (
       <Suspense fallback={<Loader />}>
         <Cart />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/checkout",
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Checkout />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/productdetail",
+    element: (
+      <Suspense fallback={<Loader />}>
+        <ProductDetails />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/pay",
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Checkout />
       </Suspense>
     ),
   },
