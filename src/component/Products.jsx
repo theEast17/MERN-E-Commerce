@@ -23,12 +23,7 @@ export default function Products() {
       <div className="mx-auto max-w-2xl px-4 py-0 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
           {products.map((product) => {
-            const averageRating =
-              product.reviews
-                .map((p) => p.rating)
-                .reduce((sum, rating) => sum + rating, 0) /
-              product.reviews.length;
-            const roundedRating = Math.round(averageRating);
+            const averageRating =  Math.round(product.rating);
             return (
               <div
                 key={product.id}
@@ -52,14 +47,14 @@ export default function Products() {
                     <div className="mt-1 text-sm text-gray-500">
                       <div className="flex items-center gap-2">
                         <div className="flex">
-                          {Array.from({ length: roundedRating },((_, index) => (
+                          {Array.from({ length: averageRating },((_, index) => (
                             <StarIcon
                               key={index}
                               className="h-4 w-4 text-yellow-500"
                             />
                           )))}
                         </div>
-                        <span className="text-md">{roundedRating}</span>
+                        <span className="text-md">{averageRating}</span>
                       </div>
                     </div>
                   </div>

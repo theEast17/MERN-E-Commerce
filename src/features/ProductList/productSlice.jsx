@@ -1,11 +1,12 @@
 import { createSlice,createAsyncThunk } from '@reduxjs/toolkit'
-import { fetchAllProducts, fetchProductsByFilter } from './productApi'
+import { fetchAllProducts, fetchBrands, fetchCategories, fetchProductsByFilter } from './productApi'
 
 
 
 const initialState = {
   products: [],
   categories: [],
+  brands:[],
   status:'idle'
 }
 
@@ -13,6 +14,20 @@ export const fetchAllProductsAsync=createAsyncThunk(
   'product/fetchAllProducts',
   async()=>{
     const response =await fetchAllProducts()
+    return response
+  }
+)
+export const fetchBrandsAsync=createAsyncThunk(
+  'product/fetchBrands',
+  async()=>{
+    const response =await fetchBrands()
+    return response
+  }
+)
+export const fetchCategoriesAsync=createAsyncThunk(
+  'product/fetchCategories',
+  async()=>{
+    const response =await fetchCategories()
     return response
   }
 )
@@ -27,11 +42,6 @@ export const fetchProductsByFilterAsync=createAsyncThunk(
 export const productSlice = createSlice({
   name: 'product',
   initialState,
-  reducers: {
-    decrement: (state) => {
-        state.value -= 1
-      },
-  },
   extraReducers:(builder)=>{
     builder.addCase(fetchAllProductsAsync.pending,(state)=>{
       state.status='loading'
@@ -47,19 +57,36 @@ export const productSlice = createSlice({
       state.status='idle';
       state.products=action.payload
     })
+    builder.addCase(fetchBrandsAsync.pending,(state)=>{
+      state.status='loading'
+    })
+    builder.addCase(fetchBrandsAsync.fulfilled,(state,action)=>{
+      state.status='idle';
+      state.brands=action.payload
+    })
+    builder.addCase(fetchCategoriesAsync.pending,(state)=>{
+      state.status='loading'
+    })
+    builder.addCase(fetchCategoriesAsync.fulfilled,(state,action)=>{
+      state.status='idle';
+      state.categories=action.payload
+    })
     
   }
 })
 
-// Action creators are generated for each case reducer function
-export const {decrement} = productSlice.actions
+
 
 export const selectAllProducts=(state)=>{
-  // console.log(state)
   return state.product.products
 }
+export const selectAllBrands=(state)=>{
+  return state.product.brands
+}
+export const selectAllCategories=(state)=>{
+  return state.product.categories
+}
 export const filterProducts=(state)=>{
-  // console.log(state)
   return state.product.products
 }
 
