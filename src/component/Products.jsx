@@ -28,7 +28,7 @@ export default function Products() {
               <div
                 key={product.id}
                 className="group relative"
-                onClick={() => navigate("/productdetail")}
+                onClick={() => navigate(`/productdetail/${product.id}`)}
               >
                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                   <img
@@ -40,7 +40,7 @@ export default function Products() {
                 <div className="mt-4 flex justify-between gap-3">
                   <div className="overflow-hidden whitespace-nowrap">
                     <h3 className="text-sm text-gray-700 truncate">
-                      <Link to={"/productdetail"}>
+                      <Link to={`/productdetail/${product.id}`}>
                         {product.title}
                       </Link>
                     </h3>

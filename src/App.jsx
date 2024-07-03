@@ -9,7 +9,7 @@ const Home = lazy(() => import("./page/Home"));
 const Login = lazy(() => import("./page/Login"));
 const Signup = lazy(() => import("./page/Signup"));
 const Checkout = lazy(() => import("./page/Checkout"));
-const ProductDetails = lazy(() => import("./page/ProductDetail"));
+const ProductDetail = lazy(() => import("./page/ProductDetail"));
 const Cart = lazy(() => import("./component/Cart"));
 
 const router = createBrowserRouter([
@@ -55,10 +55,10 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/productdetail",
+    path: "/productdetail/:id",
     element: (
       <Suspense fallback={<Loader />}>
-        <ProductDetails />
+        <ProductDetail />
       </Suspense>
     ),
   },

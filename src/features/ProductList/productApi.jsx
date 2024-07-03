@@ -21,6 +21,12 @@ export async function fetchBrands(){
     const data =await response.json()
     return data
 }
+export async function fetchProductById(id){
+    const response=await fetch(`http://localhost:3000/products/${id}`)
+    const data =await response.json()
+    console.log(data)
+    return data
+}
 
 export async function fetchCategories(){
     const response=await fetch(`http://localhost:3000/categories`)
