@@ -1,7 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import Loader from "./component/Loader";
 import Protected from "./features/Auth/Protected";
+import { fetchItemByUserIdAsync } from "./features/Cart/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectLoggedInUser } from "./features/Auth/authSlice";
 
 const Home = lazy(() => import("./page/Home"));
 const Login = lazy(() => import("./page/Login"));
@@ -80,5 +83,13 @@ const router = createBrowserRouter([
 ]);
 
 export function App() {
+  const user=useSelector(selectLoggedInUser)
+  const dispatch=useDispatch()
+  useEffect(()=>{
+    if(user){
+      dispatch(fetchItemByUserIdAsync(user.id))
+    }
+  },[dispatch,user])
+
   return <RouterProvider router={router} />;
 }

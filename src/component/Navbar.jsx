@@ -12,19 +12,20 @@ import {
   ShoppingCartIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import logo from '../assets/logo.svg'
+import logo from "../assets/logo.svg";
 import { navigation } from "../utils";
 import { Link, useNavigate } from "react-router-dom";
-
-
+import { useSelector } from "react-redux";
+import { selectCartItem } from "../features/Cart/cartSlice";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const Navbar = () => {
+  const navigate = useNavigate();
 
-  const navigate=useNavigate()
+  const items = useSelector(selectCartItem);
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -45,12 +46,8 @@ const Navbar = () => {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  <Link to={'/'}>
-                  <img
-                    className="h-8 w-auto"
-                    src={logo}
-                    alt='Logo'
-                  />
+                  <Link to={"/"}>
+                    <img className="h-8 w-auto" src={logo} alt="Logo" />
                   </Link>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
@@ -77,15 +74,17 @@ const Navbar = () => {
                 <button
                   type="button"
                   className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                    onClick={()=>navigate('/cart')}
+                  onClick={() => navigate("/cart")}
                 >
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">View notifications</span>
                   <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
-                <span className="inline-flex z-10 mb-5 -ml-3 items-center rounded-full bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
-                    5
+                {items.length > 0 && (
+                  <span className="inline-flex z-10 mb-5 -ml-3 items-center rounded-full bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
+                    {items.length}
                   </span>
+                )}
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
@@ -133,7 +132,7 @@ const Navbar = () => {
                     <MenuItem>
                       {({ focus }) => (
                         <Link
-                          to={'/login'}
+                          to={"/login"}
                           className={classNames(
                             focus ? "bg-gray-100" : "",
                             "block px-4 py-2 text-sm text-gray-700"

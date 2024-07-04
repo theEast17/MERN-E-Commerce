@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { fetchProductByIdAsync, selectProductById } from '';
 import { useParams } from 'react-router-dom';
 import { fetchProductByIdAsync, selectProductById } from '../features/ProductList/productSlice';
+import { selectLoggedInUser } from '../features/Auth/authSlice';
+import { addToCartAsync } from '../features/Cart/cartSlice';
 
 // TODO: In server data we will add colors, sizes , highlights. to each product
 
@@ -42,8 +44,13 @@ export default function ProductDetail() {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [selectedSize, setSelectedSize] = useState(sizes[2]);
   const product = useSelector(selectProductById);
-  const dispatch = useDispatch();
   const params = useParams();
+  const dispatch=useDispatch()
+  const user=useSelector(selectLoggedInUser)
+  const handleCart=(e)=>{
+    e.preventDefault()
+    dispatch(addToCartAsync({...product,quantity:1,user:user.id}))
+  }
 
   useEffect(() => {
     dispatch(fetchProductByIdAsync(params.id));
@@ -289,6 +296,7 @@ export default function ProductDetail() {
                 </div>
 
                 <button
+                onClick={(e)=>handleCart(e)}
                   type="submit"
                   className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 >
@@ -301,7 +309,6 @@ export default function ProductDetail() {
               {/* Description and details */}
               <div>
                 <h3 className="sr-only">Description</h3>
-
                 <div className="space-y-6">
                   <p className="text-base text-gray-900">
                     {product.description}

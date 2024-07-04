@@ -12,7 +12,6 @@ export async function fetchProductsByFilter(filter){
     // }
     const response=await fetch(`http://localhost:5000/products/category/${filter}`)
     const data =await response.json()
-    console.log(data)
     return data.products
 }
 
@@ -24,7 +23,6 @@ export async function fetchBrands(){
 export async function fetchProductById(id){
     const response=await fetch(`http://localhost:5000/products/${id}`)
     const data =await response.json()
-    console.log(data)
     return data
 }
 
