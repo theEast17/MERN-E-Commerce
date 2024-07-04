@@ -1,9 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Loader from "./component/Loader";
-
-
-
+import Protected from "./features/Auth/Protected";
 
 const Home = lazy(() => import("./page/Home"));
 const Login = lazy(() => import("./page/Login"));
@@ -17,10 +15,11 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <Suspense fallback={<Loader />}>
-        <Home />
+        <Protected>
+          <Home />
+        </Protected>
       </Suspense>
     ),
-
   },
   {
     path: "/login",
@@ -42,7 +41,9 @@ const router = createBrowserRouter([
     path: "/cart",
     element: (
       <Suspense fallback={<Loader />}>
-        <Cart />
+        <Protected>
+          <Cart />
+        </Protected>
       </Suspense>
     ),
   },
@@ -50,7 +51,9 @@ const router = createBrowserRouter([
     path: "/checkout",
     element: (
       <Suspense fallback={<Loader />}>
-        <Checkout />
+        <Protected>
+          <Checkout />
+        </Protected>
       </Suspense>
     ),
   },
@@ -58,7 +61,9 @@ const router = createBrowserRouter([
     path: "/productdetail/:id",
     element: (
       <Suspense fallback={<Loader />}>
-        <ProductDetail />
+        <Protected>
+          <ProductDetail />
+        </Protected>
       </Suspense>
     ),
   },
@@ -66,11 +71,12 @@ const router = createBrowserRouter([
     path: "/pay",
     element: (
       <Suspense fallback={<Loader />}>
-        <Checkout />
+        <Protected>
+          <Checkout />
+        </Protected>
       </Suspense>
     ),
   },
-  
 ]);
 
 export function App() {
