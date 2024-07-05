@@ -56,7 +56,7 @@ export const productSlice = createSlice({
     })
     builder.addCase(fetchAllProductsAsync.fulfilled,(state,action)=>{
       state.status='idle';
-      state.products=action.payload
+      state.products=action.payload    //it means the response you are getting from the server
     })
     builder.addCase(fetchProductsByFilterAsync.pending,(state)=>{
       state.status='loading'

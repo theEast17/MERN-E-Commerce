@@ -19,7 +19,8 @@ export async function checkLoggedInUser(loginInfo) {
     const email = loginInfo.email;
     const password = loginInfo.password;
     
-    const response = await api.get(`users?email=${email}`);
+    // by using this api endpoint you will get the whole information about the user accordint to their email id  
+    const response = await api.get(`users?email=${email}`);  
     const data = response.data;
     
     if (data.length) {

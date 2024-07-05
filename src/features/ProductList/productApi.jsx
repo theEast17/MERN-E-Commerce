@@ -14,9 +14,13 @@ export async function fetchProductsByFilter(filter){
     const data =await response.json()
     return data.products
 }
-
 export async function fetchBrands(){
     const response=await fetch(`http://localhost:5000/brands`)
+    const data =await response.json()
+    return data
+}
+export async function fetchCategories(){
+    const response=await fetch(`http://localhost:5000/categories`)
     const data =await response.json()
     return data
 }
@@ -26,9 +30,4 @@ export async function fetchProductById(id){
     return data
 }
 
-export async function fetchCategories(){
-    const response=await fetch(`http://localhost:5000/categories`)
-    const data =await response.json()
-    return data
-}
 

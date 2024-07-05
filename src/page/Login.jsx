@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   checkLoggedInUserAsync,
   selectLoggedInUser,
-  selectError
+  selectError,
 } from "../features/Auth/authSlice";
-import { Navigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 export default function Login() {
   const {
     register,
@@ -15,7 +15,7 @@ export default function Login() {
     formState: { errors },
   } = useForm();
 
-  const error = useSelector(selectError)
+  const error = useSelector(selectError);
   const user = useSelector(selectLoggedInUser);
   const dispatch = useDispatch();
   const onSubmit = (data) => {
@@ -23,7 +23,7 @@ export default function Login() {
   };
   return (
     <>
-    {user && <Navigate to='/' replace={true}></Navigate>}
+      {user && <Navigate to="/" replace={true}></Navigate>}
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img className="mx-auto h-10 w-auto" src={logo} alt="Logo" />
@@ -31,6 +31,8 @@ export default function Login() {
             Sign in to your account
           </h2>
         </div>
+
+        {error && <p className="text-red-400 underline mt-2 mx-auto font-bold capitalize -tracking-tighter">{error.message}</p>}
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form
@@ -88,9 +90,7 @@ export default function Login() {
                   </span>
                 )}
               </div>
-              {error && (
-                  <p className="text-red-400">{error.message}</p>
-                )}
+
               <div className="text-sm mt-1 text-right">
                 <a
                   href="#"

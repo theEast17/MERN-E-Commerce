@@ -49,7 +49,7 @@ const initialState = {
 
 export const selectLoggedInUser=(state)=>{
     return state.auth.loggedInUser
-  }
+}
 
   export const selectError = (state)=>state.auth.error;
 
