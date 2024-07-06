@@ -2460,120 +2460,26 @@
       "confirm_password": "aA1!1234"
     },
     {
-      "id": "5b46",
+      "id": "d8a8",
       "email": "shubham@gmail.com",
       "password": "aA1!1234",
-      "confirm_password": "aA1!1234"
+      "addresses": [
+        {
+          "name": "Purv",
+          "email": "shubham@gmail.com",
+          "phone": "9090909090",
+          "street": "121,ahmedabad",
+          "city": "ahmedabad",
+          "region": "gujrat",
+          "postalCode": "390089"
+        }
+      ]
     }
   ],
-  "cart": [
-    {
-      "id": "8",
-      "title": "Microsoft Surface Laptop 4",
-      "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
-      "price": 1499,
-      "discountPercentage": 10.23,
-      "rating": 4.43,
-      "stock": 68,
-      "brand": "Microsoft Surface",
-      "category": "laptops",
-      "thumbnail": "https://i.dummyjson.com/data/products/8/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/8/1.jpg",
-        "https://i.dummyjson.com/data/products/8/2.jpg",
-        "https://i.dummyjson.com/data/products/8/3.jpg",
-        "https://i.dummyjson.com/data/products/8/4.jpg",
-        "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
-      ],
-      "quantity": 1,
-      "user": "5b46"
-    },
-    {
-      "id": "20",
-      "title": "Freckle Treatment Cream- 15gm",
-      "description": "Fair & Clear is Pakistan's only pure Freckle cream which helpsfade Freckles, Darkspots and pigments. Mercury level is 0%, so there are no side effects.",
-      "price": 70,
-      "discountPercentage": 16.99,
-      "rating": 4.06,
-      "stock": 140,
-      "brand": "Fair & Clear",
-      "category": "skincare",
-      "thumbnail": "https://i.dummyjson.com/data/products/20/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/20/1.jpg",
-        "https://i.dummyjson.com/data/products/20/2.jpg",
-        "https://i.dummyjson.com/data/products/20/3.jpg",
-        "https://i.dummyjson.com/data/products/20/4.jpg",
-        "https://i.dummyjson.com/data/products/20/thumbnail.jpg"
-      ],
-      "quantity": 1,
-      "user": "5b46"
-    },
-    {
-      "id": "4",
-      "title": "OPPOF19",
-      "description": "OPPO F19 is officially announced on April 2021.",
-      "price": 280,
-      "discountPercentage": 17.91,
-      "rating": 4.3,
-      "stock": 123,
-      "brand": "OPPO",
-      "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/4/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/4/1.jpg",
-        "https://i.dummyjson.com/data/products/4/2.jpg",
-        "https://i.dummyjson.com/data/products/4/3.jpg",
-        "https://i.dummyjson.com/data/products/4/4.jpg",
-        "https://i.dummyjson.com/data/products/4/thumbnail.jpg"
-      ],
-      "quantity": 1,
-      "user": "c059"
-    },
-    {
-      "id": "2",
-      "title": "iPhone X",
-      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-      "price": 899,
-      "discountPercentage": 17.94,
-      "rating": 4.44,
-      "stock": 34,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/2/1.jpg",
-        "https://i.dummyjson.com/data/products/2/2.jpg",
-        "https://i.dummyjson.com/data/products/2/3.jpg",
-        "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-      ],
-      "quantity": 1,
-      "user": "5b46"
-    },
-    {
-      "id": "2",
-      "title": "iPhone X",
-      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-      "price": 899,
-      "discountPercentage": 17.94,
-      "rating": 4.44,
-      "stock": 34,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/2/1.jpg",
-        "https://i.dummyjson.com/data/products/2/2.jpg",
-        "https://i.dummyjson.com/data/products/2/3.jpg",
-        "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-      ],
-      "quantity": 1,
-      "user": "c059"
-    }
-  ],
+  "cart": [],
   "orders": [
     {
-      "id": "ca91",
+      "id": "ada5",
       "user": {
         "id": "c059",
         "email": "poorv@gmail.com",
@@ -2658,7 +2564,7 @@
       "status": "pending"
     },
     {
-      "id": "d44c",
+      "id": "b8cc",
       "user": {
         "id": "c059",
         "email": "poorv@gmail.com",
@@ -2740,6 +2646,60 @@
         "postalCode": "345678"
       },
       "selectedPaymentMethod": "cash",
+      "status": "pending"
+    },
+    {
+      "id": "624c",
+      "user": {
+        "id": "d8a8",
+        "email": "shubham@gmail.com",
+        "password": "aA1!1234",
+        "addresses": [
+          {
+            "name": "Purv",
+            "email": "shubham@gmail.com",
+            "phone": "9090909090",
+            "street": "121,ahmedabad",
+            "city": "ahmedabad",
+            "region": "gujrat",
+            "postalCode": "390089"
+          }
+        ]
+      },
+      "products": [
+        {
+          "id": "2",
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/2/1.jpg",
+            "https://i.dummyjson.com/data/products/2/2.jpg",
+            "https://i.dummyjson.com/data/products/2/3.jpg",
+            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": "d8a8"
+        }
+      ],
+      "totalAmount": 899,
+      "totalItems": 1,
+      "selectedAddress": {
+        "name": "Purv",
+        "email": "shubham@gmail.com",
+        "phone": "9090909090",
+        "street": "121,ahmedabad",
+        "city": "ahmedabad",
+        "region": "gujrat",
+        "postalCode": "390089"
+      },
+      "selectedPaymentMethod": "card",
       "status": "pending"
     }
   ]

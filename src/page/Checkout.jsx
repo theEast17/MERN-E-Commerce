@@ -18,6 +18,9 @@ function Checkout() {
     formState: { errors },
   } = useForm();
 
+  const [selectedAddress,setSelectedAddress]=useState(null)
+  const [selectedPaymentMethod,setselectedPaymentMethod]=useState(null)
+
   const dispatch = useDispatch();
 
   const products = useSelector(selectCartItem);
@@ -40,17 +43,15 @@ function Checkout() {
     dispatch(deleteCartAsync(id));
   };
 
+  const handleAddress=(e)=>{
+    setSelectedAddress(user.addresses[e.target.value])
+  }
+
   const onSubmit = (data) => {
     dispatch(updateUserAsync({...user,addresses:[...user.addresses,data]}))
     reset()
   };
 
-  const [selectedAddress,setSelectedAddress]=useState(null)
-  const [selectedPaymentMethod,setselectedPaymentMethod]=useState('cash')
-
-  const handleAddress=(e)=>{
-    setSelectedAddress(user.addresses[e.target.value])
-  }
   const handlePayment=(e)=>{
     setselectedPaymentMethod(e.target.value)
   }
@@ -60,7 +61,7 @@ function Checkout() {
       const order={user,products,totalAmount,totalItems,selectedAddress,selectedPaymentMethod,status:'pending'}
       dispatch(addOrderAsync(order))
     }else{
-      alert('enter address and payment method')
+      alert('Enter address and Payment method')
     }
   }
 
