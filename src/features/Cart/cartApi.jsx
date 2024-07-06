@@ -39,7 +39,6 @@ export async function deleteCart(id) {
 export async function fetchItemByUserId(userId) {
     try {
       const response = await api.get(`cart?user=${userId}`);
-      console.log(response)
       const data = response.data;
       return data
     } catch (error) {

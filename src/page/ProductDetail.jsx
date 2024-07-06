@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 import { fetchProductByIdAsync, selectProductById } from '../features/ProductList/productSlice';
 import { selectLoggedInUser } from '../features/Auth/authSlice';
 import { addToCartAsync } from '../features/Cart/cartSlice';
+import Navbar from '../component/Navbar'
 
 // TODO: In server data we will add colors, sizes , highlights. to each product
 
@@ -58,6 +59,8 @@ export default function ProductDetail() {
   }, [dispatch, params.id]);
 
   return (
+  <>  
+    <Navbar/>
     <div className="bg-white">
       {product && (
         <div className="pt-6">
@@ -345,5 +348,6 @@ export default function ProductDetail() {
         </div>
       )}
     </div>
+    </>
   );
 }

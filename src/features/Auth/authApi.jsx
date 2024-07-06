@@ -14,6 +14,17 @@ export async function createUser(userData) {
   return data;
 }
 
+export async function updateUser(user) {
+  try {
+    const response = await api.patch(`users/${user.id}`, user, {
+      headers: { "Content-Type": "application/json" },
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function checkLoggedInUser(loginInfo) {
   try {
     const email = loginInfo.email;

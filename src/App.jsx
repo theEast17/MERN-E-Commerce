@@ -5,6 +5,8 @@ import Protected from "./features/Auth/Protected";
 import { fetchItemByUserIdAsync } from "./features/Cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLoggedInUser } from "./features/Auth/authSlice";
+import OrderSuccess from "./page/OrderSuccessPage";
+
 
 const Home = lazy(() => import("./page/Home"));
 const Login = lazy(() => import("./page/Login"));
@@ -12,6 +14,7 @@ const Signup = lazy(() => import("./page/Signup"));
 const Checkout = lazy(() => import("./page/Checkout"));
 const ProductDetail = lazy(() => import("./page/ProductDetail"));
 const Cart = lazy(() => import("./component/Cart"));
+const Page404 = lazy(()=> import("./page/404"));
 
 const router = createBrowserRouter([
   {
@@ -71,12 +74,20 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/pay",
+    path: "/order-success/:id",
     element: (
       <Suspense fallback={<Loader />}>
         <Protected>
-          <Checkout />
+          <OrderSuccess />
         </Protected>
+      </Suspense>
+    ),
+  },
+  {
+    path: "*",
+    element: (
+      <Suspense fallback={<Loader />}>
+          <Page404 />
       </Suspense>
     ),
   },
