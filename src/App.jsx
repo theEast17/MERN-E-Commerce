@@ -6,6 +6,7 @@ import { fetchItemByUserIdAsync } from "./features/Cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLoggedInUser } from "./features/Auth/authSlice";
 import OrderSuccess from "./page/OrderSuccessPage";
+import UserOrders from "./page/UserOrders";
 
 
 const Home = lazy(() => import("./page/Home"));
@@ -79,6 +80,16 @@ const router = createBrowserRouter([
       <Suspense fallback={<Loader />}>
         <Protected>
           <OrderSuccess />
+        </Protected>
+      </Suspense>
+    ),
+  },
+  {
+    path: "/orders",
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Protected>
+          <UserOrders />
         </Protected>
       </Suspense>
     ),

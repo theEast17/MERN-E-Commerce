@@ -105,28 +105,28 @@ const Navbar = () => {
                   >
                     <MenuItem>
                       {({ focus }) => (
-                        <a
-                          href="#"
+                        <Link
+                          to={'/profile'}
                           className={classNames(
                             focus ? "bg-gray-100" : "",
                             "block px-4 py-2 text-sm text-gray-700"
                           )}
                         >
                           Your Profile
-                        </a>
+                        </Link>
                       )}
                     </MenuItem>
                     <MenuItem>
                       {({ focus }) => (
-                        <a
-                          href="#"
+                        <Link
+                          to={'/orders'}
                           className={classNames(
                             focus ? "bg-gray-100" : "",
                             "block px-4 py-2 text-sm text-gray-700"
                           )}
                         >
-                          Settings
-                        </a>
+                          My Orders
+                        </Link>
                       )}
                     </MenuItem>
                     <MenuItem>
