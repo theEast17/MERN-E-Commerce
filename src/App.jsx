@@ -5,8 +5,7 @@ import Protected from "./features/Auth/Protected";
 import { fetchItemByUserIdAsync } from "./features/Cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLoggedInUser } from "./features/Auth/authSlice";
-import OrderSuccess from "./page/OrderSuccessPage";
-import UserOrders from "./page/UserOrders";
+import { getLoggedInUserByIdAsync } from "./features/User/userSlice";
 
 
 const Home = lazy(() => import("./page/Home"));
@@ -16,6 +15,9 @@ const Checkout = lazy(() => import("./page/Checkout"));
 const ProductDetail = lazy(() => import("./page/ProductDetail"));
 const Cart = lazy(() => import("./component/Cart"));
 const Page404 = lazy(()=> import("./page/404"));
+const OrderSuccess=lazy(()=> import("./page/OrderSuccessPage"))
+const UserOrders=lazy(()=> import("./page/UserOrders"))
+const UserProfile=lazy(()=> import("./page/UserProfile"))
 
 const router = createBrowserRouter([
   {
@@ -95,6 +97,16 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "/profile",
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Protected>
+          <UserProfile />
+        </Protected>
+      </Suspense>
+    ),
+  },
+  {
     path: "*",
     element: (
       <Suspense fallback={<Loader />}>
@@ -110,6 +122,7 @@ export function App() {
   useEffect(()=>{
     if(user){
       dispatch(fetchItemByUserIdAsync(user.id))
+      dispatch(getLoggedInUserByIdAsync(user.id))
     }
   },[dispatch,user])
 

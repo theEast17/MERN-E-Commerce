@@ -112,7 +112,7 @@ const Navbar = () => {
                             "block px-4 py-2 text-sm text-gray-700"
                           )}
                         >
-                          Your Profile
+                          My Profile
                         </Link>
                       )}
                     </MenuItem>

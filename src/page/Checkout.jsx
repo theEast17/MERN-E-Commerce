@@ -6,9 +6,10 @@ import {
   updateCartAsync,
 } from "../features/Cart/cartSlice";
 import { useForm } from "react-hook-form";
-import { selectLoggedInUser, updateUserAsync } from "../features/Auth/authSlice";
+import { updateUserAsync } from "../features/Auth/authSlice";
 import { useState } from "react";
 import { addOrderAsync, selectCurrentOrder } from "../features/Order/orderSlice";
+import { selectLoggedInUserInfoById } from "../features/User/userSlice";
 
 function Checkout() {
   const {
@@ -25,7 +26,7 @@ function Checkout() {
 
   const products = useSelector(selectCartItem);
 
-  const user=useSelector(selectLoggedInUser);
+  const user=useSelector(selectLoggedInUserInfoById);
 
   const currentOrder=useSelector(selectCurrentOrder)
 
