@@ -39,3 +39,8 @@ export async function checkLoggedInUser(loginInfo) {
   }
 }
 
+export async function signOut(userId){
+  const response =`signout`
+  return response
+}
+
