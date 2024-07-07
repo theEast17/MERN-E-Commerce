@@ -6,6 +6,8 @@ import { fetchItemByUserIdAsync } from "./features/Cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLoggedInUser } from "./features/Auth/authSlice";
 import { getLoggedInUserByIdAsync } from "./features/User/userSlice";
+import Logout from "./component/Logout";
+import ForgotPassword from "./page/ForgotPassword";
 
 
 const Home = lazy(() => import("./page/Home"));
@@ -103,6 +105,24 @@ const router = createBrowserRouter([
         <Protected>
           <UserProfile />
         </Protected>
+      </Suspense>
+    ),
+  },
+  {
+    path: "/logout",
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Protected>
+          <Logout />
+        </Protected>
+      </Suspense>
+    ),
+  },
+  {
+    path: "/forgotpassword",
+    element: (
+      <Suspense fallback={<Loader />}>
+          <ForgotPassword />
       </Suspense>
     ),
   },
