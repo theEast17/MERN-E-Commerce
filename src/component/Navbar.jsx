@@ -17,6 +17,7 @@ import { navigation } from "../utils";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectCartItem } from "../features/Cart/cartSlice";
+import { selectLoggedInUser } from "../features/Auth/authSlice";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -26,6 +27,9 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const items = useSelector(selectCartItem);
+
+  const user = useSelector(selectLoggedInUser);
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -52,21 +56,23 @@ const Navbar = () => {
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      <Link
-                        key={item.name}
-                        to={item.href}
-                        className={classNames(
-                          item.current
-                            ? "bg-gray-900 text-white"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "rounded-md px-3 py-2 text-sm font-medium"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
+                    {navigation.map((item) =>
+                      item[user.role] ? (
+                        <Link
+                          key={item.name}
+                          to={item.href}
+                          className={classNames(
+                            item.current
+                              ? "bg-gray-900 text-white"
+                              : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                            "rounded-md px-3 py-2 text-sm font-medium"
+                          )}
+                          aria-current={item.current ? "page" : undefined}
+                        >
+                          {item.name}
+                        </Link>
+                      ) : null
+                    )}
                   </div>
                 </div>
               </div>
@@ -106,7 +112,7 @@ const Navbar = () => {
                     <MenuItem>
                       {({ focus }) => (
                         <Link
-                          to={'/profile'}
+                          to={"/profile"}
                           className={classNames(
                             focus ? "bg-gray-100" : "",
                             "block px-4 py-2 text-sm text-gray-700"
@@ -119,7 +125,7 @@ const Navbar = () => {
                     <MenuItem>
                       {({ focus }) => (
                         <Link
-                          to={'/orders'}
+                          to={"/orders"}
                           className={classNames(
                             focus ? "bg-gray-100" : "",
                             "block px-4 py-2 text-sm text-gray-700"

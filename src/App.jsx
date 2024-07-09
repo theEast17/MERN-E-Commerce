@@ -6,8 +6,7 @@ import { fetchItemByUserIdAsync } from "./features/Cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLoggedInUser } from "./features/Auth/authSlice";
 import { getLoggedInUserByIdAsync } from "./features/User/userSlice";
-import Logout from "./component/Logout";
-import ForgotPassword from "./page/ForgotPassword";
+import ProtectedAdmin from "./features/Auth/ProtectedAdmin";
 
 
 const Home = lazy(() => import("./page/Home"));
@@ -16,10 +15,18 @@ const Signup = lazy(() => import("./page/Signup"));
 const Checkout = lazy(() => import("./page/Checkout"));
 const ProductDetail = lazy(() => import("./page/ProductDetail"));
 const Cart = lazy(() => import("./component/Cart"));
-const Page404 = lazy(()=> import("./page/404"));
-const OrderSuccess=lazy(()=> import("./page/OrderSuccessPage"))
-const UserOrders=lazy(()=> import("./page/UserOrders"))
-const UserProfile=lazy(()=> import("./page/UserProfile"))
+const Page404 = lazy(() => import("./page/404"));
+const OrderSuccess = lazy(() => import("./page/OrderSuccessPage"));
+const UserOrders = lazy(() => import("./page/UserOrders"));
+const UserProfile = lazy(() => import("./page/UserProfile"));
+const Logout = lazy(() => import("./component/Logout"));
+const ForgotPassword = lazy(() => import("./page/ForgotPassword"));
+const AdminHome = lazy(() => import("./page/AdminPages/AdminHome"));
+const AdminProductDetails = lazy(() => import("./page/AdminPages/AdminProductDetails"));
+const AdminProductForm = lazy(() => import("./page/AdminPages/AdminProductForm"));
+const AdminOrders = lazy(() => import("./page/AdminPages/AdminOrders"));
+
+
 
 const router = createBrowserRouter([
   {
@@ -122,7 +129,57 @@ const router = createBrowserRouter([
     path: "/forgotpassword",
     element: (
       <Suspense fallback={<Loader />}>
-          <ForgotPassword />
+        <ForgotPassword />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/admin",
+    element: (
+      <Suspense fallback={<Loader />}>
+        <ProtectedAdmin>
+          <AdminHome />
+        </ProtectedAdmin>
+      </Suspense>
+    ),
+  },
+  {
+    path: "/admin/product-details/:id",
+    element: (
+      <Suspense fallback={<Loader />}>
+        <ProtectedAdmin>
+          <AdminProductDetails />
+        </ProtectedAdmin>
+      </Suspense>
+    ),
+  },
+  {
+    path: "/admin/product-form",
+    element: (
+      <Suspense fallback={<Loader />}>
+        <ProtectedAdmin>
+          <AdminProductForm />
+        </ProtectedAdmin>
+      </Suspense>
+    ),
+  },
+  {
+    path: "/admin/product-form/edit/:id",
+    element: (
+      <Suspense fallback={<Loader />}>
+        <ProtectedAdmin>
+        <AdminProductForm />
+        </ProtectedAdmin>
+      </Suspense>
+    ),
+  },
+  {
+    path: "/admin/orders",
+    element: (
+      <Suspense fallback={<Loader />}>
+        <ProtectedAdmin>
+        <AdminOrders />
+        </ProtectedAdmin>
       </Suspense>
     ),
   },
@@ -130,21 +187,21 @@ const router = createBrowserRouter([
     path: "*",
     element: (
       <Suspense fallback={<Loader />}>
-          <Page404 />
+        <Page404 />
       </Suspense>
     ),
   },
 ]);
 
 export function App() {
-  const user=useSelector(selectLoggedInUser)
-  const dispatch=useDispatch()
-  useEffect(()=>{
-    if(user){
-      dispatch(fetchItemByUserIdAsync(user.id))
-      dispatch(getLoggedInUserByIdAsync(user.id))
+  const user = useSelector(selectLoggedInUser);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (user) {
+      dispatch(fetchItemByUserIdAsync(user.id));
+      dispatch(getLoggedInUserByIdAsync(user.id));
     }
-  },[dispatch,user])
+  }, [dispatch, user]);
 
   return <RouterProvider router={router} />;
 }

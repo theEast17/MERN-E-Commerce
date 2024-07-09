@@ -1838,6 +1838,25 @@
         "https://i.dummyjson.com/data/products/100/3.jpg",
         "https://i.dummyjson.com/data/products/100/thumbnail.jpg"
       ]
+    },
+    {
+      "id": "3bcf",
+      "title": "laptop east and west poorv is the best",
+      "description": "east is a very good company to use the laptop in the world ",
+      "brand": "Impression of Acqua Di Gio",
+      "category": "womens-bags",
+      "price": 10000,
+      "discountPercentage": 10,
+      "stock": 100,
+      "thumbnail": "https://th.bing.com/th/id/OIP.cSDFahXLEgJdpHBoiCBfkQHaHa?w=208&h=208&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+      "images": [
+        "https://th.bing.com/th/id/OIP.Q1xzsuK1Xt7BExyH2UgGbwHaHa?w=207&h=208&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+        "https://th.bing.com/th/id/OIP.7RR91CH7INu8jr8y4U-MrQHaHa?w=207&h=208&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+        "https://th.bing.com/th/id/OIP.7RR91CH7INu8jr8y4U-MrQHaHa?w=207&h=208&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+        "https://th.bing.com/th/id/OIP.cSDFahXLEgJdpHBoiCBfkQHaHa?w=208&h=208&c=7&r=0&o=5&dpr=1.5&pid=1.7"
+      ],
+      "rating": 0,
+      "deleted": true
     }
   ],
   "brands": [
@@ -2437,6 +2456,7 @@
       "id": "c059",
       "email": "poorv@gmail.com",
       "password": "aA1!1234",
+      "role": "user",
       "addresses": [
         {
           "name": "Purv Nagar",
@@ -2463,6 +2483,24 @@
       "id": "d8a8",
       "email": "shubham@gmail.com",
       "password": "aA1!1234",
+      "role": "user",
+      "addresses": [
+        {
+          "name": "Purv",
+          "email": "shubham@gmail.com",
+          "phone": "9090909090",
+          "street": "121,ahmedabad",
+          "city": "ahmedabad",
+          "region": "gujrat",
+          "postalCode": "390089"
+        }
+      ]
+    },
+    {
+      "id": "90d1",
+      "email": "admin@gmail.com",
+      "password": "aA1!1234",
+      "role": "admin",
       "addresses": [
         {
           "name": "Purv",
