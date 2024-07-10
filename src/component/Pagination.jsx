@@ -3,17 +3,18 @@ import { ITEMS_PER_PAGE } from "../app/constant";
 
 // eslint-disable-next-line react/prop-types, no-unused-vars
 export default function Pagination({ handlePage, page, setPage, totalItems }) {
+  const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
   return (
     <div className="flex items-center justify-between border-t mt-5 border-gray-200 bg-white px-4 py-3 sm:px-6">
       <div className="flex flex-1 justify-between sm:hidden">
         <a
-          href="#"
+           onClick={() => handlePage(page > 1 ? page - 1 : page)}
           className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
         >
           Previous
         </a>
         <a
-          href="#"
+          onClick={() => handlePage(page < totalPages ? page + 1 : page)}
           className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
         >
           Next
@@ -41,8 +42,8 @@ export default function Pagination({ handlePage, page, setPage, totalItems }) {
             aria-label="Pagination"
           >
             <a
-              href="#"
-              className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+             onClick={() => handlePage(page > 1 ? page - 1 : page)}
+              className="relative inline-flex cursor-pointer items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
             >
               <span className="sr-only">Previous</span>
               <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
@@ -72,8 +73,8 @@ export default function Pagination({ handlePage, page, setPage, totalItems }) {
             )}
 
             <a
-              href="#"
-              className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+             onClick={() => handlePage(page < totalPages ? page + 1 : page)}
+              className="relative inline-flex cursor-pointer items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
             >
               <span className="sr-only">Next</span>
               <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />

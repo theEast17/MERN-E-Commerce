@@ -9,6 +9,7 @@ import {
 import { useEffect } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { selectLoggedInUser } from "../features/Auth/authSlice";
+import { discountedPrice } from "../app/constant";
 
 export default function Products({handlePage,page,setPage,totalItems}) {
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ export default function Products({handlePage,page,setPage,totalItems}) {
                     className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                   />
                 </div>
-                <div className="mt-4 flex justify-between gap-3">
+                <div className="mt-4 flex justify-between gap-3 cursor-pointer">
                   <div className="overflow-hidden whitespace-nowrap">
                     <h3 className="text-sm text-gray-700 truncate">
                       <Link to={`/productdetail/${product.id}`}>
@@ -73,10 +74,7 @@ export default function Products({handlePage,page,setPage,totalItems}) {
                   <div className="flex flex-col items-center">
                     <p className="text-sm font-medium text-green-600">
                       $
-                      {Math.round(
-                        product.price -
-                          product.price * (product.discountPercentage / 100)
-                      )}
+                      {discountedPrice(product)}
                     </p>
                     <p className="text-sm font-medium text-red-400 line-through">
                       ${product.price}
@@ -85,6 +83,11 @@ export default function Products({handlePage,page,setPage,totalItems}) {
                   {product.deleted && (
                     <div>
                       <p className="text-sm text-red-400">product deleted</p>
+                    </div>
+                  )}
+                  {product.stock <= 0 && (
+                    <div>
+                      <p className="text-sm text-red-400">out of stocks</p>
                     </div>
                   )}
                 </div>

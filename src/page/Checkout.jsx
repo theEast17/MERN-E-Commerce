@@ -10,6 +10,7 @@ import { updateUserAsync } from "../features/Auth/authSlice";
 import { useState } from "react";
 import { addOrderAsync, selectCurrentOrder } from "../features/Order/orderSlice";
 import { selectLoggedInUserInfoById } from "../features/User/userSlice";
+import { discountedPrice } from "../app/constant";
 
 function Checkout() {
   const {
@@ -31,7 +32,8 @@ function Checkout() {
   const currentOrder=useSelector(selectCurrentOrder)
 
   const totalAmount = products.reduce(
-    (amount, item) => item.price * item.quantity + amount,
+    // (amount, item) => item.price * item.quantity + amount,
+    (amount, item) => discountedPrice(item) * item.quantity + amount,
     0
   );
   const totalItems = products.reduce((total, item) => item.quantity + total, 0);
@@ -413,7 +415,7 @@ function Checkout() {
                                   {product.title}
                                 </Link>
                               </h3>
-                              <p className="ml-4">${product.price}</p>
+                              <p className="ml-4">${discountedPrice(product)}</p>
                             </div>
                             <p className="mt-1 text-sm text-gray-500">
                               {product.brand}

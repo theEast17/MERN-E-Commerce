@@ -33,7 +33,7 @@ import {
 import { ITEMS_PER_PAGE } from "../app/constant";
 
 const sortOptions = [
-  { name: "Best Rating", sort: "rating", order: "desc", current: false },
+  { name: "Best Rating", sort: "rating", order: "asc", current: false },
   { name: "Price: Low to High", sort: "price", order: "asc", current: false },
   { name: "Price: High to Low", sort: "price", order: "desc", current: false },
 ];
@@ -101,7 +101,7 @@ export default function Hero() {
 
   useEffect(() => {
     setPage(1);
-  }, [totalItems]);
+  }, [totalItems, sort]);
 
   return (
     <div className="bg-white">
@@ -278,7 +278,7 @@ function DesktopDevice({
                               ? "font-medium text-gray-900"
                               : "text-gray-500",
                             focus ? "bg-gray-100" : "",
-                            "block px-4 py-2 text-sm"
+                            "block px-4 py-2 text-sm cursor-pointer"
                           )}
                         >
                           {option.name}
@@ -360,11 +360,11 @@ function DesktopDevice({
                                 onChange={(e) =>
                                   handleFilter(e, section, option)
                                 }
-                                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                className="h-4 w-4 cursor-pointer rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                               />
                               <label
                                 htmlFor={`filter-${section.id}-${optionIdx}`}
-                                className="ml-3 text-sm text-gray-600 capitalize"
+                                className="ml-3 text-sm text-gray-600 capitalize cursor-pointer"
                               >
                                 {option.label}
                               </label>

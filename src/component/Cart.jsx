@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { selectCartItem } from "../features/Cart/cartSlice";
 import { useDispatch } from "react-redux";
 import { updateCartAsync, deleteCartAsync } from "../features/Cart/cartSlice";
+import { discountedPrice } from "../app/constant";
 
 export default function Cart() {
   const [open, setOpen] = useState(true);
@@ -17,7 +18,7 @@ export default function Cart() {
   const products = useSelector(selectCartItem);
 
   const totalAmount = products.reduce(
-    (amount, item) => item.price * item.quantity + amount,
+    (amount, item) => discountedPrice(item) * item.quantity + amount,
     0
   );
   const totalItems = products.reduce((total, item) => item.quantity + total, 0);
@@ -85,7 +86,7 @@ export default function Cart() {
                                 {product.title}
                               </Link>
                             </h3>
-                            <p className="ml-4">${product.price}</p>
+                            <p className="ml-4">${discountedPrice(product)}</p>
                           </div>
                           <p className="mt-1 text-sm text-gray-500">
                             {product.brand}

@@ -7,7 +7,7 @@
       "price": 549,
       "discountPercentage": 12.96,
       "rating": 4.69,
-      "stock": 94,
+      "stock": 0,
       "brand": "Apple",
       "category": "smartphones",
       "thumbnail": "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
@@ -1790,7 +1790,7 @@
       "price": 34,
       "discountPercentage": 5.92,
       "rating": 4.99,
-      "stock": 44,
+      "stock": 30,
       "brand": "DADAWU",
       "category": "lighting",
       "thumbnail": "https://i.dummyjson.com/data/products/98/thumbnail.jpg",
@@ -1847,7 +1847,7 @@
       "category": "womens-bags",
       "price": 10000,
       "discountPercentage": 10,
-      "stock": 100,
+      "stock": 0,
       "thumbnail": "https://th.bing.com/th/id/OIP.cSDFahXLEgJdpHBoiCBfkQHaHa?w=208&h=208&c=7&r=0&o=5&dpr=1.5&pid=1.7",
       "images": [
         "https://th.bing.com/th/id/OIP.Q1xzsuK1Xt7BExyH2UgGbwHaHa?w=207&h=208&c=7&r=0&o=5&dpr=1.5&pid=1.7",
@@ -2558,22 +2558,38 @@
       "user": "5b46"
     },
     {
-      "id": "9",
-      "title": "Infinix INBOOK",
-      "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
-      "price": 1099,
-      "discountPercentage": 11.83,
-      "rating": 4.54,
-      "stock": 96,
-      "brand": "Infinix",
-      "category": "laptops",
-      "thumbnail": "https://i.dummyjson.com/data/products/9/thumbnail.jpg",
+      "id": "2",
+      "title": "iPhone X",
+      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+      "price": 899,
+      "discountPercentage": 17.94,
+      "rating": 4.44,
+      "stock": 34,
+      "brand": "Apple",
+      "category": "smartphones",
+      "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
       "images": [
-        "https://i.dummyjson.com/data/products/9/1.jpg",
-        "https://i.dummyjson.com/data/products/9/2.png",
-        "https://i.dummyjson.com/data/products/9/3.png",
-        "https://i.dummyjson.com/data/products/9/4.jpg",
-        "https://i.dummyjson.com/data/products/9/thumbnail.jpg"
+        "https://i.dummyjson.com/data/products/2/1.jpg",
+        "https://i.dummyjson.com/data/products/2/2.jpg",
+        "https://i.dummyjson.com/data/products/2/3.jpg",
+        "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+      ],
+      "quantity": 1,
+      "user": "c059"
+    },
+    {
+      "id": "3",
+      "title": "Samsung Universe 9",
+      "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+      "price": 1249,
+      "discountPercentage": 15.46,
+      "rating": 4.09,
+      "stock": 36,
+      "brand": "Samsung",
+      "category": "smartphones",
+      "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
+      "images": [
+        "https://i.dummyjson.com/data/products/3/1.jpg"
       ],
       "quantity": 1,
       "user": "c059"
@@ -2663,7 +2679,7 @@
         "postalCode": "345678"
       },
       "selectedPaymentMethod": "cash",
-      "status": "pending"
+      "status": "dispatched"
     },
     {
       "id": "b8cc",
