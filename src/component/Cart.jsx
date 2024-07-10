@@ -126,7 +126,7 @@ export default function Cart() {
                             />
                             <button
                               type="button"
-                              onClick={e=>setOpenModal(product.id)}
+                              onClick={()=>setOpenModal(product.id)}
                               className="font-medium text-indigo-600 hover:text-indigo-500"
                             >
                               Remove

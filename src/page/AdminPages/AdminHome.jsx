@@ -30,7 +30,7 @@ import {
   selectAllCategories,
 } from "../../features/ProductList/productSlice";
 import Navbar from "../../component/Navbar";
-
+import { ITEMS_PER_PAGE } from "../../app/constant";
 
 const sortOptions = [
   { name: "Best Rating", sort: "rating", order: "desc", current: false },
@@ -38,23 +38,20 @@ const sortOptions = [
   { name: "Price: High to Low", sort: "price", order: "desc", current: false },
 ];
 
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function AdminHome() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-  // const [filter,setFilter]=useState({})
+  const [filter, setFilter] = useState({});
+  const [sort, setSort] = useState({});
+  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
 
   const brands = useSelector(selectAllBrands);
   const categories = useSelector(selectAllCategories);
-
-  useEffect(() => {
-    dispatch(fetchBrandsAsync());
-    dispatch(fetchCategoriesAsync());
-  }, [dispatch]);
+  const totalItems = 100;
 
   const filters = [
     {
@@ -70,16 +67,44 @@ export default function AdminHome() {
   ];
 
   const handleFilter = (e, section, option) => {
-    dispatch(fetchProductsByFilterAsync(option));
+    const newFilter = { ...filter };
+    if (e.target.checked) {
+      if (newFilter[section.id]) {
+        newFilter[section.id].push(option.value);
+      } else {
+        newFilter[section.id] = [option.value];
+      }
+    } else {
+      const index = newFilter[section.id].findIndex(
+        (el) => el === option.value
+      );
+      newFilter[section.id].splice(index, 1);
+    }
+    setFilter(newFilter);
   };
 
   const handleSort = (e, option) => {
-    console.log(e, option);
+    const sort = { _sort: option.sort, _order: option.order };
+    setSort(sort);
   };
 
+  const handlePage = (page) => {
+    setPage(page);
+  };
+
+  useEffect(() => {
+    const pagination = { _page: page, limit: ITEMS_PER_PAGE };
+    dispatch(fetchBrandsAsync());
+    dispatch(fetchCategoriesAsync());
+    dispatch(fetchProductsByFilterAsync({ filter, sort, pagination }));
+  }, [dispatch, filter, sort, page]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [totalItems, sort]);
   return (
     <div className="bg-white">
-    <Navbar/>
+      <Navbar />
       <div>
         <MobileDevice
           mobileFiltersOpen={mobileFiltersOpen}
@@ -90,7 +115,11 @@ export default function AdminHome() {
         <DesktopDevice
           handleFilter={handleFilter}
           handleSort={handleSort}
+          handlePage={handlePage}
+          page={page}
+          setPage={setPage}
           filters={filters}
+          totalItems={totalItems}
           setMobileFiltersOpen={setMobileFiltersOpen}
         />
       </div>
@@ -102,7 +131,7 @@ function MobileDevice({
   mobileFiltersOpen,
   setMobileFiltersOpen,
   handleFilter,
-  filters
+  filters,
 }) {
   return (
     <>
@@ -204,7 +233,16 @@ function MobileDevice({
   );
 }
 
-function DesktopDevice({ handleSort, setMobileFiltersOpen, handleFilter,filters }) {
+function DesktopDevice({
+  handleSort,
+  setMobileFiltersOpen,
+  handleFilter,
+  filters,
+  page,
+  setPage,
+  handlePage,
+  totalItems,
+}) {
   return (
     <>
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -342,8 +380,12 @@ function DesktopDevice({ handleSort, setMobileFiltersOpen, handleFilter,filters 
 
             {/* Product grid */}
             <div className="lg:col-span-3">
-              <Products />
-             
+              <Products
+                handlePage={handlePage}
+                page={page}
+                setPage={setPage}
+                totalItems={totalItems}
+              />
             </div>
           </div>
         </section>
