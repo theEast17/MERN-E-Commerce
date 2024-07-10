@@ -58,16 +58,17 @@ const UserProfile = () => {
         <div className="mx-auto mt-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
             <h1 className="text-4xl my-5 font-bold tracking-tight text-gray-900">
-              Name: {user.addresses[0].name ? user.addresses[0].name : "New User"}
+              Name:{" "}
+              {user.addresses[0].name ? user.addresses[0].name : "New User"}
             </h1>
             <h3 className="text-xl my-5 font-bold tracking-tight text-red-900">
               email address : {user.email}
             </h3>
-            {user.role === 'admin' && (
-            <h3 className="text-xl my-5 font-bold tracking-tight text-red-900">
-              role : {user.role}
-            </h3>
-          )}
+            {user.role === "admin" && (
+              <h3 className="text-xl my-5 font-bold tracking-tight text-red-900">
+                role : {user.role}
+              </h3>
+            )}
           </div>
 
           <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
@@ -523,7 +524,7 @@ const UserProfile = () => {
                       {address.city}
                     </p>
                   </div>
-                  <div className="hidden sm:flex sm:flex-col sm:items-end">
+                  <div className="flex flex-col  sm:flex sm:flex-col sm:items-end">
                     <button
                       onClick={(e) => handleEditForm(index)}
                       type="button"

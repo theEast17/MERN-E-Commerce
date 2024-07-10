@@ -7,6 +7,7 @@ import { selectCartItem } from "../features/Cart/cartSlice";
 import { useDispatch } from "react-redux";
 import { updateCartAsync, deleteCartAsync } from "../features/Cart/cartSlice";
 import { discountedPrice } from "../app/constant";
+import Modal from "../app/Modal";
 
 export default function Cart() {
   const [open, setOpen] = useState(true);
@@ -16,6 +17,8 @@ export default function Cart() {
   const dispatch = useDispatch();
 
   const products = useSelector(selectCartItem);
+
+  const [openModal,setOpenModal]=useState(null)
 
   const totalAmount = products.reduce(
     (amount, item) => discountedPrice(item) * item.quantity + amount,
@@ -110,9 +113,20 @@ export default function Cart() {
                           </div>
 
                           <div className="flex">
+                            <Modal
+                              title={`Delete ${product.title}`}
+                              message={
+                                "Are you sure you want to delete this cart item ?"
+                              }
+                              dangerOption={"Delete"}
+                              cancelOption={"Cancel"}
+                              dangerAction={()=>handleDelete(product.id)}
+                              cancleAction={()=>setOpenModal(-1)}
+                              showModal={openModal===product.id}
+                            />
                             <button
                               type="button"
-                              onClick={() => handleDelete(product.id)}
+                              onClick={e=>setOpenModal(product.id)}
                               className="font-medium text-indigo-600 hover:text-indigo-500"
                             >
                               Remove

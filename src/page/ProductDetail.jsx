@@ -10,6 +10,8 @@ import { selectLoggedInUser } from '../features/Auth/authSlice';
 import { addToCartAsync, selectCartItem } from '../features/Cart/cartSlice';
 import Navbar from '../component/Navbar'
 import { discountedPrice } from '../app/constant';
+import {toast } from 'react-toastify';
+
 
 // TODO: In server data we will add colors, sizes , highlights. to each product
 
@@ -58,8 +60,9 @@ export default function ProductDetail() {
     e.preventDefault()
     if(cartItems.findIndex(item=>item.id===product.id)<0){
       dispatch(addToCartAsync({...product,quantity:1,user:user.id}))
+      toast.success("Item added to the cart!");
     }else{
-      console.log('already present in the cart')
+      toast.error("Item alrrady in the cart!");
     }
   }
 
