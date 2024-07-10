@@ -14,5 +14,16 @@ export async function addOrder(item) {
     console.log(error);
   }
 }
-
-
+export async function getAllOrder(pagination) {
+  let queryString = "";
+  for (let key in pagination) {
+    queryString += `${key}=${pagination[key]}&`;
+  }
+  try {
+    const response = await api.get(`orders?${queryString}`)
+    const totalOrders = await response.headers.get("X-Total-Count");
+    return { orders: response.data, totalItems: +totalOrders };
+  } catch (error) {
+    console.log(error);
+  }
+}

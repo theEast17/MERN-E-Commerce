@@ -1,30 +1,45 @@
 export async function fetchAllProducts() {
-  const response = await fetch(`http://localhost:5000/products?limit=70`);
+  const response = await fetch(`http://localhost:5000/products`);
   const data = await response.json();
   return data;
 }
 
-export async function fetchProductsByFilter(filter) {
-  // let queryString='';
-  // for(let key in filter){
-  //     queryString+=`${key}=${filter[key]}&`
-  // }
-  const response = await fetch(
-    `http://localhost:5000/products/category/${filter}`
-  );
+export async function fetchProductsByFilter(filter, sort, pagination) {
+  let queryString = "";
+  for (let key in filter) {
+    const categoryValue = filter[key];
+    if (categoryValue.length) {
+      const lastCategoryValue = categoryValue[categoryValue.length - 1];
+      queryString += `${key}=${lastCategoryValue}&`;
+    }
+  }
+  for (let key in sort) {
+    queryString += `${key}=${sort[key]}&`;
+  }
+  for (let key in pagination) {
+    queryString += `${key}=${pagination[key]}&`;
+  }
+  const response = await fetch("http://localhost:5000/products?" + queryString);
+
+  
+  const totalItems =await response.headers.get("X-Total-Count");
+
   const data = await response.json();
-  return data.products;
+  return { data: { products: data, totalItems } };
 }
+
 export async function fetchBrands() {
   const response = await fetch(`http://localhost:5000/brands`);
   const data = await response.json();
   return data;
 }
+
 export async function fetchCategories() {
   const response = await fetch(`http://localhost:5000/categories`);
   const data = await response.json();
   return data;
 }
+
 export async function fetchProductById(id) {
   const response = await fetch(`http://localhost:5000/products/${id}`);
   const data = await response.json();

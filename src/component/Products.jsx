@@ -1,4 +1,5 @@
-import { Link, useNavigate } from "react-router-dom";
+/* eslint-disable react/prop-types */
+import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -9,9 +10,8 @@ import { useEffect } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { selectLoggedInUser } from "../features/Auth/authSlice";
 
-export default function Products() {
+export default function Products({handlePage,page,setPage,totalItems}) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const products = useSelector(selectAllProducts);
   const user = useSelector(selectLoggedInUser);
@@ -35,7 +35,7 @@ export default function Products() {
         )}
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-          {products.map((product) => {
+          {products.data?.map((product) => {
             const averageRating = Math.round(product.rating);
             return (
               <div key={product.id} className="group relative">
@@ -103,7 +103,7 @@ export default function Products() {
           })}
         </div>
       </div>
-      <Pagination />
+      <Pagination handlePage={handlePage} page={page} setPage={setPage} totalItems={totalItems}/>
     </div>
   );
 }
