@@ -6,6 +6,7 @@ import {
 } from "../features/User/userSlice";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const UserProfile = () => {
   const dispatch = useDispatch();
@@ -26,11 +27,13 @@ const UserProfile = () => {
     newUser.addresses.splice(index, 1, addressUpdate);
     dispatch(updateUserAsync(newUser));
     setSelectedEditIndex(-1);
+    toast.success('Address updated successfully !')
   };
   const handleRemove = (e, index) => {
     const newUser = { ...user, addresses: [...user.addresses] }; // for shallow copy issue
     newUser.addresses.splice(index, 1);
     dispatch(updateUserAsync(newUser));
+    toast.success('Address deleted successfully !')
   };
 
   const handleEditForm = (index) => {
@@ -49,6 +52,7 @@ const UserProfile = () => {
     const newUser = { ...user, addresses: [...user.addresses, address] };
     dispatch(updateUserAsync(newUser));
     setShowAddAddressForm(false);
+    toast.success('Address added successfully !')
   };
 
   return (
@@ -274,9 +278,13 @@ const UserProfile = () => {
 
                   <div className="mt-6 flex items-center justify-end gap-x-6">
                     <button
-                      onClick={() => setSelectedEditIndex(-1)}
+                      onClick={() => {
+                        setSelectedEditIndex(-1);
+                        setShowAddAddressForm(false);
+                      }
+                      }
                       type="submit"
-                      className="rounded-md px-3 py-2 text-sm font-semibold text-grey shadow-sm hover:bg-grey-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      className="rounded-md border px-3 py-2 text-sm font-semibold text-grey shadow-sm hover:bg-grey-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                       Cancel
                     </button>
@@ -293,7 +301,7 @@ const UserProfile = () => {
 
             <p className="mt-0.5 text-sm text-gray-500">Your Addresses :</p>
             {user.addresses.map((address, index) => (
-              <div key={index}>
+              <div key={index} className="mb-2">
                 {selectedEditIndex === index ? (
                   <form
                     className="bg-white px-5 py-12 mt-12"
@@ -306,7 +314,7 @@ const UserProfile = () => {
                     <div className="space-y-12">
                       <div className="border-b border-gray-900/10 pb-12">
                         <h2 className="text-2xl font-semibold leading-7 text-gray-900">
-                          Personal Information
+                          Edit Personal Information
                         </h2>
                         <p className="mt-1 text-sm leading-6 text-gray-600">
                           Use a permanent address where you can receive mail.

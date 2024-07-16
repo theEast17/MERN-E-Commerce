@@ -16,7 +16,7 @@ function AdminOrders() {
   const dispatch = useDispatch();
   const orders = useSelector(selectOrderItem);
   const totalOrders = useSelector(selectTotalOrder);
-  const [editableOrderId, setEditableOrderId] = useState(-1);
+  const [editableOrderId, setEditableOrderId] = useState(-1); //32ae
   const [sort, setSort] = useState({});
 
   const handleEdit = (order) => {
@@ -65,9 +65,9 @@ function AdminOrders() {
     <>
     <Navbar/>
     <div className="overflow-x-auto">
-      <div className="bg-gray-100 flex items-center justify-center font-sans overflow-hidden">
+      <div className="flex items-center justify-center font-sans">
         <div className="w-full">
-          <div className="bg-white shadow-md rounded my-6">
+          <div className="bg-white rounded my-6">
             <table className="min-w-max w-full table-auto">
               <thead>
                 <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
@@ -148,8 +148,8 @@ function AdminOrders() {
                         </div>
                         <div>{order.selectedAddress.street},</div>
                         <div>{order.selectedAddress.city}, </div>
-                        <div>{order.selectedAddress.state}, </div>
-                        <div>{order.selectedAddress.pinCode}, </div>
+                        <div>{order.selectedAddress.region}, </div>
+                        <div>{order.selectedAddress.postalCode}, </div>
                         <div>{order.selectedAddress.phone}, </div>
                       </div>
                     </td>
@@ -176,13 +176,13 @@ function AdminOrders() {
                         <div className="w-6 mr-4 transform hover:text-purple-500 hover:scale-120">
                           <EyeIcon
                             className="w-8 h-8 cursor-pointer"
-                            onClick={(e) => handleShow(order)}
+                            onClick={() => handleShow(order)}
                           ></EyeIcon>
                         </div>
                         <div className="w-6 mr-2 transform hover:text-purple-500 hover:scale-120">
                           <PencilIcon
                             className="w-8 h-8 cursor-pointer"
-                            onClick={(e) => handleEdit(order)}
+                            onClick={() => handleEdit(order)}
                           ></PencilIcon>
                         </div>
                       </div>

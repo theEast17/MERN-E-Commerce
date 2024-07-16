@@ -50,11 +50,10 @@ export const userSlice = createSlice({
     builder.addCase(getLoggedInUserByIdAsync.pending, (state) => {
       state.status = "loading";
     });
-    builder
-      .addCase(getLoggedInUserByIdAsync.fulfilled, (state, action) => {
+    builder.addCase(getLoggedInUserByIdAsync.fulfilled, (state, action) => {
         state.status = "idle";
         state.userInfo = action.payload;
-      })
+    })
       .addCase(updateUserAsync.pending, (state) => {
         state.status = "loading";
       })

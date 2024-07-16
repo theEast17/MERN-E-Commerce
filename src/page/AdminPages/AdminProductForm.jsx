@@ -12,8 +12,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Modal from "../../app/Modal";
-import {  toast } from "react-toastify";
-
+import { toast } from "react-toastify";
 
 function AdminProductForm() {
   const {
@@ -31,7 +30,7 @@ function AdminProductForm() {
 
   const navigate = useNavigate();
 
-  const [openModal,setOpenModal]=useState(null)
+  const [openModal, setOpenModal] = useState(null);
 
   useEffect(() => {
     if (params.id) {
@@ -67,7 +66,7 @@ function AdminProductForm() {
 
   return (
     <>
-    <Modal
+      <Modal
         title={`Delete Product`}
         message={"Are you sure you want to delete this item ?"}
         dangerOption={"Delete"}
@@ -102,14 +101,12 @@ function AdminProductForm() {
             dispatch(updateProductAsync(product));
             toast.success("Product updated successfully!");
             reset();
-            navigate('/')
-
+            navigate("/admin");
           } else {
             // if we want to create
             dispatch(createProductAsync(product));
             toast.success("Product created successfully!");
             reset();
-            //TODO:  on product successfully added clear fields and show a message
           }
         })}
       >
@@ -449,7 +446,7 @@ function AdminProductForm() {
         <div className="mt-6 flex items-center justify-end gap-x-6">
           <button
             type="button"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/admin")}
             className="text-sm font-semibold leading-6 px-3 py-2 rounded-md border text-gray-900"
           >
             Cancel
@@ -457,7 +454,10 @@ function AdminProductForm() {
 
           {selectedProduct && !selectedProduct.deleted && (
             <button
-              onClick={(e)=>{e.preventDefault();setOpenModal(true)}}
+              onClick={(e) => {
+                e.preventDefault();
+                setOpenModal(true);
+              }}
               className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Delete
@@ -472,8 +472,6 @@ function AdminProductForm() {
           </button>
         </div>
       </form>
-
-      
     </>
   );
 }

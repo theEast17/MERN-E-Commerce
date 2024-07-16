@@ -7,7 +7,7 @@ const api = axios.create({
 
 export async function getLoggedInUserOrdersById(userId) {
   try {
-    const response = await api.get(`orders/?user.id=${userId}`)
+    const response = await api.get(`orders?user.id=${userId}`)
     return response.data;
   } catch (error) {
     console.log(error);

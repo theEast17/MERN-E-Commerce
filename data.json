@@ -2481,21 +2481,21 @@
       "role": "user",
       "addresses": [
         {
-          "name": "Purv Nagar",
-          "email": "nagar@gmail.com",
-          "phone": "9087654561",
-          "street": "121,abc society",
-          "city": "ahmedabad",
-          "region": "gujrat",
-          "postalCode": "345678"
+          "name": "khushubu Nayi",
+          "email": "khushbu@gmail.com",
+          "phone": "9057803941",
+          "street": "121,Amikunj society,surelia estate, Ameraiwadi ,Ahemedabad-380026, 121,Amikunj society,surelia estate",
+          "city": "Ahmedabad",
+          "region": "Gujarat",
+          "postalCode": "380026"
         },
         {
-          "name": "khushbu",
-          "email": "khushbu@gmail.com",
-          "phone": "9089789078",
-          "street": "gujrat",
-          "city": "ahmedabad",
-          "region": "gujrat",
+          "name": "Purv Prakashbhai",
+          "email": "poorv@gmail.com",
+          "phone": "9328403855",
+          "street": "121,Amikunj society,surelia estate, Ameraiwadi ,Ahemedabad-380026, 121,Amikunj society,surelia estate",
+          "city": "Ahmedabad",
+          "region": "Gujarat",
           "postalCode": "380026"
         }
       ],
@@ -2589,46 +2589,6 @@
       "user": "5b46"
     },
     {
-      "id": "2",
-      "title": "iPhone X",
-      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-      "price": 899,
-      "discountPercentage": 17.94,
-      "rating": 4.44,
-      "stock": 34,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/2/1.jpg",
-        "https://i.dummyjson.com/data/products/2/2.jpg",
-        "https://i.dummyjson.com/data/products/2/3.jpg",
-        "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-      ],
-      "quantity": 1,
-      "user": "d8a8"
-    },
-    {
-      "id": "2",
-      "title": "iPhone X",
-      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-      "price": 899,
-      "discountPercentage": 17.94,
-      "rating": 4.44,
-      "stock": 34,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/2/1.jpg",
-        "https://i.dummyjson.com/data/products/2/2.jpg",
-        "https://i.dummyjson.com/data/products/2/3.jpg",
-        "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-      ],
-      "quantity": 1,
-      "user": "c059"
-    },
-    {
       "id": "3",
       "title": "Samsung Universe 9",
       "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
@@ -2648,282 +2608,88 @@
   ],
   "orders": [
     {
-      "id": "ada5",
+      "id": "32ae",
       "user": {
         "id": "c059",
         "email": "poorv@gmail.com",
         "password": "aA1!1234",
+        "role": "user",
         "addresses": [
           {
-            "name": "Purv Nagar",
-            "email": "nagar@gmail.com",
-            "phone": "9087654561",
-            "street": "121,abc society",
-            "city": "ahmedabad",
-            "region": "gujrat",
-            "postalCode": "345678"
+            "name": "khushubu Nayi",
+            "email": "khushbu@gmail.com",
+            "phone": "9057803941",
+            "street": "121,Amikunj society,surelia estate, Ameraiwadi ,Ahemedabad-380026, 121,Amikunj society,surelia estate",
+            "city": "Ahmedabad",
+            "region": "Gujarat",
+            "postalCode": "380026"
           },
           {
-            "name": "Purv",
-            "email": "shubham@gmail.com",
-            "phone": "9434323330",
-            "street": "gujrat",
-            "city": "ahmedabad",
-            "region": "gujrat",
-            "postalCode": "5900393"
+            "name": "Purv Prakashbhai",
+            "email": "poorv@gmail.com",
+            "phone": "9328403855",
+            "street": "121,Amikunj society,surelia estate, Ameraiwadi ,Ahemedabad-380026, 121,Amikunj society,surelia estate",
+            "city": "Ahmedabad",
+            "region": "Gujarat",
+            "postalCode": "380026"
           }
         ],
         "confirm_password": "aA1!1234"
       },
       "products": [
         {
-          "id": "4",
-          "title": "OPPOF19",
-          "description": "OPPO F19 is officially announced on April 2021.",
-          "price": 280,
-          "discountPercentage": 17.91,
-          "rating": 4.3,
-          "stock": 123,
-          "brand": "OPPO",
+          "id": "5",
+          "title": "Huawei P30",
+          "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
+          "price": 499,
+          "discountPercentage": 10.58,
+          "rating": 4.09,
+          "stock": 32,
+          "brand": "Huawei",
           "category": "smartphones",
-          "thumbnail": "https://i.dummyjson.com/data/products/4/thumbnail.jpg",
+          "thumbnail": "https://i.dummyjson.com/data/products/5/thumbnail.jpg",
           "images": [
-            "https://i.dummyjson.com/data/products/4/1.jpg",
-            "https://i.dummyjson.com/data/products/4/2.jpg",
-            "https://i.dummyjson.com/data/products/4/3.jpg",
-            "https://i.dummyjson.com/data/products/4/4.jpg",
-            "https://i.dummyjson.com/data/products/4/thumbnail.jpg"
+            "https://i.dummyjson.com/data/products/5/1.jpg",
+            "https://i.dummyjson.com/data/products/5/2.jpg",
+            "https://i.dummyjson.com/data/products/5/3.jpg"
           ],
-          "quantity": 1,
+          "quantity": 3,
           "user": "c059"
         },
         {
-          "id": "2",
-          "title": "iPhone X",
-          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-          "price": 899,
-          "discountPercentage": 17.94,
-          "rating": 4.44,
-          "stock": 34,
-          "brand": "Apple",
-          "category": "smartphones",
-          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+          "id": "10",
+          "title": "HP Pavilion 15-DK1056WM",
+          "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
+          "price": 1099,
+          "discountPercentage": 6.18,
+          "rating": 4.43,
+          "stock": 89,
+          "brand": "HP Pavilion",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
           "images": [
-            "https://i.dummyjson.com/data/products/2/1.jpg",
-            "https://i.dummyjson.com/data/products/2/2.jpg",
-            "https://i.dummyjson.com/data/products/2/3.jpg",
-            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+            "https://i.dummyjson.com/data/products/10/1.jpg",
+            "https://i.dummyjson.com/data/products/10/2.jpg",
+            "https://i.dummyjson.com/data/products/10/3.jpg",
+            "https://i.dummyjson.com/data/products/10/thumbnail.jpeg"
           ],
           "quantity": 1,
           "user": "c059"
         }
       ],
-      "totalAmount": 1179,
-      "totalItems": 2,
+      "totalAmount": 2369,
+      "totalItems": 4,
       "selectedAddress": {
-        "name": "Purv Nagar",
-        "email": "nagar@gmail.com",
-        "phone": "9087654561",
-        "street": "121,abc society",
-        "city": "ahmedabad",
-        "region": "gujrat",
-        "postalCode": "345678"
+        "name": "khushubu Nayi",
+        "email": "khushbu@gmail.com",
+        "phone": "9057803941",
+        "street": "121,Amikunj society,surelia estate, Ameraiwadi ,Ahemedabad-380026, 121,Amikunj society,surelia estate",
+        "city": "Ahmedabad",
+        "region": "Gujarat",
+        "postalCode": "380026"
       },
       "selectedPaymentMethod": "cash",
-      "status": "dispatched"
-    },
-    {
-      "id": "b8cc",
-      "user": {
-        "id": "c059",
-        "email": "poorv@gmail.com",
-        "password": "aA1!1234",
-        "addresses": [
-          {
-            "name": "Purv Nagar",
-            "email": "nagar@gmail.com",
-            "phone": "9087654561",
-            "street": "121,abc society",
-            "city": "ahmedabad",
-            "region": "gujrat",
-            "postalCode": "345678"
-          },
-          {
-            "name": "Purv",
-            "email": "shubham@gmail.com",
-            "phone": "9434323330",
-            "street": "gujrat",
-            "city": "ahmedabad",
-            "region": "gujrat",
-            "postalCode": "5900393"
-          }
-        ],
-        "confirm_password": "aA1!1234"
-      },
-      "products": [
-        {
-          "id": "4",
-          "title": "OPPOF19",
-          "description": "OPPO F19 is officially announced on April 2021.",
-          "price": 280,
-          "discountPercentage": 17.91,
-          "rating": 4.3,
-          "stock": 123,
-          "brand": "OPPO",
-          "category": "smartphones",
-          "thumbnail": "https://i.dummyjson.com/data/products/4/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/4/1.jpg",
-            "https://i.dummyjson.com/data/products/4/2.jpg",
-            "https://i.dummyjson.com/data/products/4/3.jpg",
-            "https://i.dummyjson.com/data/products/4/4.jpg",
-            "https://i.dummyjson.com/data/products/4/thumbnail.jpg"
-          ],
-          "quantity": 1,
-          "user": "c059"
-        },
-        {
-          "id": "2",
-          "title": "iPhone X",
-          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-          "price": 899,
-          "discountPercentage": 17.94,
-          "rating": 4.44,
-          "stock": 34,
-          "brand": "Apple",
-          "category": "smartphones",
-          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/2/1.jpg",
-            "https://i.dummyjson.com/data/products/2/2.jpg",
-            "https://i.dummyjson.com/data/products/2/3.jpg",
-            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-          ],
-          "quantity": 1,
-          "user": "c059"
-        }
-      ],
-      "totalAmount": 1179,
-      "totalItems": 2,
-      "selectedAddress": {
-        "name": "Purv Nagar",
-        "email": "nagar@gmail.com",
-        "phone": "9087654561",
-        "street": "121,abc society",
-        "city": "ahmedabad",
-        "region": "gujrat",
-        "postalCode": "345678"
-      },
-      "selectedPaymentMethod": "cash",
-      "status": "pending"
-    },
-    {
-      "id": "624c",
-      "user": {
-        "id": "d8a8",
-        "email": "shubham@gmail.com",
-        "password": "aA1!1234",
-        "addresses": [
-          {
-            "name": "Purv",
-            "email": "shubham@gmail.com",
-            "phone": "9090909090",
-            "street": "121,ahmedabad",
-            "city": "ahmedabad",
-            "region": "gujrat",
-            "postalCode": "390089"
-          }
-        ]
-      },
-      "products": [
-        {
-          "id": "2",
-          "title": "iPhone X",
-          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-          "price": 899,
-          "discountPercentage": 17.94,
-          "rating": 4.44,
-          "stock": 34,
-          "brand": "Apple",
-          "category": "smartphones",
-          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/2/1.jpg",
-            "https://i.dummyjson.com/data/products/2/2.jpg",
-            "https://i.dummyjson.com/data/products/2/3.jpg",
-            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-          ],
-          "quantity": 1,
-          "user": "d8a8"
-        }
-      ],
-      "totalAmount": 899,
-      "totalItems": 1,
-      "selectedAddress": {
-        "name": "Purv",
-        "email": "shubham@gmail.com",
-        "phone": "9090909090",
-        "street": "121,ahmedabad",
-        "city": "ahmedabad",
-        "region": "gujrat",
-        "postalCode": "390089"
-      },
-      "selectedPaymentMethod": "card",
-      "status": "pending"
-    },
-    {
-      "id": "ecd5",
-      "user": {
-        "id": "d8a8",
-        "email": "shubham@gmail.com",
-        "password": "aA1!1234",
-        "addresses": [
-          {
-            "name": "Purv",
-            "email": "shubham@gmail.com",
-            "phone": "9090909090",
-            "street": "121,ahmedabad",
-            "city": "ahmedabad",
-            "region": "gujrat",
-            "postalCode": "390089"
-          }
-        ]
-      },
-      "products": [
-        {
-          "id": "2",
-          "title": "iPhone X",
-          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-          "price": 899,
-          "discountPercentage": 17.94,
-          "rating": 4.44,
-          "stock": 34,
-          "brand": "Apple",
-          "category": "smartphones",
-          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/2/1.jpg",
-            "https://i.dummyjson.com/data/products/2/2.jpg",
-            "https://i.dummyjson.com/data/products/2/3.jpg",
-            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-          ],
-          "quantity": 1,
-          "user": "d8a8"
-        }
-      ],
-      "totalAmount": 899,
-      "totalItems": 1,
-      "selectedAddress": {
-        "name": "Purv",
-        "email": "shubham@gmail.com",
-        "phone": "9090909090",
-        "street": "121,ahmedabad",
-        "city": "ahmedabad",
-        "region": "gujrat",
-        "postalCode": "390089"
-      },
-      "selectedPaymentMethod": "cash",
-      "status": "pending"
+      "status": "delivered"
     }
   ]
 }

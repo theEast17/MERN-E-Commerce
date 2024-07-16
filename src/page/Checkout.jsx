@@ -11,6 +11,7 @@ import { useState } from "react";
 import { addOrderAsync, selectCurrentOrder } from "../features/Order/orderSlice";
 import { selectLoggedInUserInfoById } from "../features/User/userSlice";
 import { discountedPrice } from "../app/constant";
+import { toast } from "react-toastify";
 
 function Checkout() {
   const {
@@ -64,7 +65,16 @@ function Checkout() {
       const order={user,products,totalAmount,totalItems,selectedAddress,selectedPaymentMethod,status:'pending'}
       dispatch(addOrderAsync(order))
     }else{
-      alert('Enter address and Payment method')
+      if(!selectedAddress && !selectedPaymentMethod){
+       return toast.error('Please Select Address and Payment Method !')
+      
+      }
+      if(!selectedAddress){
+        return toast.error('Please Select Address from addresses or add address !')
+      }
+      if(!selectedPaymentMethod){
+        return toast.error('Please Select Payment Method from Payment Methods !')
+      }
     }
   }
 

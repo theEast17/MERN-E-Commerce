@@ -64,6 +64,7 @@ const initialState = {
       })
       builder.addCase(updateUserAsync.fulfilled,(state,action)=>{
         state.status='idle';
+        // all the infirmation about the user including addresses
         state.loggedInUser=action.payload
       })
       builder.addCase(signOutAsync.pending,(state)=>{

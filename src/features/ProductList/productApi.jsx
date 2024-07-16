@@ -8,6 +8,7 @@ export async function fetchProductsByFilter(filter, sort, pagination) {
   let queryString = "";
   for (let key in filter) {
     const categoryValue = filter[key];
+    // ['apple','banana']
     if (categoryValue.length) {
       const lastCategoryValue = categoryValue[categoryValue.length - 1];
       queryString += `${key}=${lastCategoryValue}&`;
@@ -63,6 +64,5 @@ export async function updateProduct(update) {
     headers: { "content-type": "application/json" },
   });
   const data = await response.json();
-  // TODO: on server it will only return some info of user (not password)
   return data;
 }

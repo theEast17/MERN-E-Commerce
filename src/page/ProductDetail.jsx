@@ -56,13 +56,15 @@ export default function ProductDetail() {
   const cartItems =useSelector(selectCartItem)
 
 
+
+
   const handleCart=(e)=>{
     e.preventDefault()
     if(cartItems.findIndex(item=>item.id===product.id)<0){
       dispatch(addToCartAsync({...product,quantity:1,user:user.id}))
       toast.success("Item added to the cart!");
     }else{
-      toast.error("Item alrrady in the cart!");
+      toast.error("Item already present in the cart!");
     }
   }
 
