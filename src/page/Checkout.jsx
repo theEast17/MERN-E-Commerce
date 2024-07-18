@@ -8,7 +8,10 @@ import {
 import { useForm } from "react-hook-form";
 import { updateUserAsync } from "../features/Auth/authSlice";
 import { useState } from "react";
-import { addOrderAsync, selectCurrentOrder } from "../features/Order/orderSlice";
+import {
+  addOrderAsync,
+  selectCurrentOrder,
+} from "../features/Order/orderSlice";
 import { selectLoggedInUserInfoById } from "../features/User/userSlice";
 import { discountedPrice } from "../app/constant";
 import { toast } from "react-toastify";
@@ -21,16 +24,16 @@ function Checkout() {
     formState: { errors },
   } = useForm();
 
-  const [selectedAddress,setSelectedAddress]=useState(null)
-  const [selectedPaymentMethod,setselectedPaymentMethod]=useState(null)
+  const [selectedAddress, setSelectedAddress] = useState(null);
+  const [selectedPaymentMethod, setselectedPaymentMethod] = useState(null);
 
   const dispatch = useDispatch();
 
   const products = useSelector(selectCartItem);
 
-  const user=useSelector(selectLoggedInUserInfoById);
+  const user = useSelector(selectLoggedInUserInfoById);
 
-  const currentOrder=useSelector(selectCurrentOrder)
+  const currentOrder = useSelector(selectCurrentOrder);
 
   const totalAmount = products.reduce(
     // (amount, item) => item.price * item.quantity + amount,
@@ -47,41 +50,59 @@ function Checkout() {
     dispatch(deleteCartAsync(id));
   };
 
-  const handleAddress=(e)=>{
-    setSelectedAddress(user.addresses[e.target.value])
-  }
-
-  const onSubmit = (data) => {
-    dispatch(updateUserAsync({...user,addresses:[...user.addresses,data]}))
-    reset()
+  const handleAddress = (e) => {
+    setSelectedAddress(user.addresses[e.target.value]);
   };
 
-  const handlePayment=(e)=>{
-    setselectedPaymentMethod(e.target.value)
-  }
+  const onSubmit = (data) => {
+    dispatch(
+      updateUserAsync({ ...user, addresses: [...user.addresses, data] })
+    );
+    reset();
+  };
 
-  const handleOrder=()=>{
-    if(selectedAddress && selectedPaymentMethod){
-      const order={user,products,totalAmount,totalItems,selectedAddress,selectedPaymentMethod,status:'pending'}
-      dispatch(addOrderAsync(order))
-    }else{
-      if(!selectedAddress && !selectedPaymentMethod){
-       return toast.error('Please Select Address and Payment Method !')
-      
+  const handlePayment = (e) => {
+    setselectedPaymentMethod(e.target.value);
+  };
+
+  const handleOrder = () => {
+    if (selectedAddress && selectedPaymentMethod) {
+      const order = {
+        user:user.id,
+        products,
+        totalAmount,
+        totalItems,
+        selectedAddress,
+        selectedPaymentMethod,
+        status: "pending",
+      };
+      dispatch(addOrderAsync(order));
+    } else {
+      if (!selectedAddress && !selectedPaymentMethod) {
+        return toast.error("Please Select Address and Payment Method !");
       }
-      if(!selectedAddress){
-        return toast.error('Please Select Address from addresses or add address !')
+      if (!selectedAddress) {
+        return toast.error(
+          "Please Select Address from addresses or add address !"
+        );
       }
-      if(!selectedPaymentMethod){
-        return toast.error('Please Select Payment Method from Payment Methods !')
+      if (!selectedPaymentMethod) {
+        return toast.error(
+          "Please Select Payment Method from Payment Methods !"
+        );
       }
     }
-  }
+  };
 
   return (
     <>
       {!products.length && <Navigate to="/" replace={true}></Navigate>}
-      {currentOrder && <Navigate to={`/order-success/${currentOrder.id}`} replace={true}></Navigate>}
+      {currentOrder && (
+        <Navigate
+          to={`/order-success/${currentOrder.id}`}
+          replace={true}
+        ></Navigate>
+      )}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 bg-gray-100">
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
           <div className="lg:col-span-3 ">
@@ -290,7 +311,7 @@ function Checkout() {
                 <div className="mt-6 flex items-center justify-end gap-x-6">
                   <button
                     type="button"
-                    onClick={()=>reset()}
+                    onClick={() => reset()}
                     className="rounded-md border border-indigo-600 text-indigo-600 px-3 py-2 text-sm font-semibold bg-white shadow-sm hover:bg-indigo-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     Reset
@@ -311,7 +332,7 @@ function Checkout() {
                     Choose from Existing addresses
                   </p>
                   <ul role="list">
-                    {user.addresses?.map((address,index) => (
+                    {user.addresses?.map((address, index) => (
                       <li
                         key={index}
                         className="flex justify-between gap-x-6 px-5 py-5 border border-gray-200"
@@ -361,10 +382,10 @@ function Checkout() {
                           <input
                             id="cash"
                             onChange={handlePayment}
-                            value='cash'
+                            value="cash"
                             name="payments"
                             type="radio"
-                            checked={selectedPaymentMethod==='cash'}
+                            checked={selectedPaymentMethod === "cash"}
                             className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                           />
                           <label
@@ -379,9 +400,9 @@ function Checkout() {
                             id="card"
                             name="payments"
                             onChange={handlePayment}
-                            value='card'
+                            value="card"
                             type="radio"
-                            checked={selectedPaymentMethod==='card'}
+                            checked={selectedPaymentMethod === "card"}
                             className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                           />
                           <label
@@ -425,7 +446,9 @@ function Checkout() {
                                   {product.title}
                                 </Link>
                               </h3>
-                              <p className="ml-4">${discountedPrice(product)}</p>
+                              <p className="ml-4">
+                                ${discountedPrice(product)}
+                              </p>
                             </div>
                             <p className="mt-1 text-sm text-gray-500">
                               {product.brand}
