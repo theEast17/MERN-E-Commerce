@@ -36,7 +36,7 @@ export default function Products({handlePage,page,setPage,totalItems}) {
         )}
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-          {products.data?.map((product) => {
+          {products?.map((product) => {
             const averageRating = Math.round(product.rating);
             return (
               <div key={product.id} className="group relative">

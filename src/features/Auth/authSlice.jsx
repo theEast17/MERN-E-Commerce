@@ -26,7 +26,7 @@ const initialState = {
     'user/checkLoggedInUser',
     async(data)=>{
       const response =await checkLoggedInUser(data)
-      return response.data
+      return response
     }
   )
   export const signOutAsync=createAsyncThunk(

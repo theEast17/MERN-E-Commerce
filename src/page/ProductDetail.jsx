@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { StarIcon } from '@heroicons/react/20/solid';
 import { RadioGroup } from '@headlessui/react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { fetchProductByIdAsync, selectProductById } from '';
+
 import { useParams } from 'react-router-dom';
 import { fetchProductByIdAsync, selectProductById } from '../features/ProductList/productSlice';
 import { selectLoggedInUser } from '../features/Auth/authSlice';
@@ -53,20 +53,25 @@ export default function ProductDetail() {
   const dispatch=useDispatch()
   const user=useSelector(selectLoggedInUser)
 
-  const cartItems =useSelector(selectCartItem)
 
-
+  const items =useSelector(selectCartItem)
 
 
   const handleCart=(e)=>{
-    e.preventDefault()
-    if(cartItems.findIndex(item=>item.id===product.id)<0){
-      dispatch(addToCartAsync({...product,quantity:1,user:user.id}))
+    e.preventDefault();
+    if (items.findIndex((item) => item.product.id === product.id) < 0) {
+      const newItem = {
+        product: product.id,
+        quantity: 1,
+        user:user.id
+      };
+      dispatch(addToCartAsync(newItem));
       toast.success("Item added to the cart!");
-    }else{
-      toast.error("Item already present in the cart!");
+    } else {
+      toast.error('Item Already added');
     }
   }
+  
 
   useEffect(() => {
     dispatch(fetchProductByIdAsync(params.id));

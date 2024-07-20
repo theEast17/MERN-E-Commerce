@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 
 const UserProfile = () => {
   const dispatch = useDispatch();
-  const user = useSelector(selectLoggedInUserInfoById);
+  const User  = useSelector(selectLoggedInUserInfoById);
   const [selectedEditIndex, setSelectedEditIndex] = useState(-1);
   const [showAddAddressForm, setShowAddAddressForm] = useState(false);
 
@@ -23,22 +23,22 @@ const UserProfile = () => {
   } = useForm();
 
   const handleEdit = (addressUpdate, index) => {
-    const newUser = { ...user, addresses: [...user.addresses] }; // for shallow copy issue
+    const newUser = { ...User, addresses: [...User.addresses] }; // for shallow copy issue
     newUser.addresses.splice(index, 1, addressUpdate);
     dispatch(updateUserAsync(newUser));
     setSelectedEditIndex(-1);
-    toast.success('Address updated successfully !')
+    toast.success("Address updated successfully !");
   };
   const handleRemove = (e, index) => {
-    const newUser = { ...user, addresses: [...user.addresses] }; // for shallow copy issue
+    const newUser = { ...User, addresses: [...User.addresses] }; // for shallow copy issue
     newUser.addresses.splice(index, 1);
     dispatch(updateUserAsync(newUser));
-    toast.success('Address deleted successfully !')
+    toast.success("Address deleted successfully !");
   };
 
   const handleEditForm = (index) => {
     setSelectedEditIndex(index);
-    const address = user.addresses[index];
+    const address = User.addresses[index];
     setValue("name", address.name);
     setValue("email", address.email);
     setValue("city", address.city);
@@ -49,10 +49,10 @@ const UserProfile = () => {
   };
 
   const handleAdd = (address) => {
-    const newUser = { ...user, addresses: [...user.addresses, address] };
+    const newUser = { ...User, addresses: [...User.addresses, address] };
     dispatch(updateUserAsync(newUser));
     setShowAddAddressForm(false);
-    toast.success('Address added successfully !')
+    toast.success("Address added successfully !");
   };
 
   return (
@@ -63,14 +63,14 @@ const UserProfile = () => {
           <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
             <h1 className="text-4xl my-5 font-bold tracking-tight text-gray-900">
               Name:{" "}
-              {user.addresses[0].name ? user.addresses[0].name : "New User"}
+              {User.name || "New User"}
             </h1>
             <h3 className="text-xl my-5 font-bold tracking-tight text-red-900">
-              email address : {user.email}
+              email address : {User.email}
             </h3>
-            {user.role === "admin" && (
+            {User.role === "admin" && (
               <h3 className="text-xl my-5 font-bold tracking-tight text-red-900">
-                role : {user.role}
+                role : {User.role}
               </h3>
             )}
           </div>
@@ -281,8 +281,7 @@ const UserProfile = () => {
                       onClick={() => {
                         setSelectedEditIndex(-1);
                         setShowAddAddressForm(false);
-                      }
-                      }
+                      }}
                       type="submit"
                       className="rounded-md border px-3 py-2 text-sm font-semibold text-grey shadow-sm hover:bg-grey-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
@@ -300,7 +299,7 @@ const UserProfile = () => {
             ) : null}
 
             <p className="mt-0.5 text-sm text-gray-500">Your Addresses :</p>
-            {user.addresses.map((address, index) => (
+            {User.addresses.map((address, index) => (
               <div key={index} className="mb-2">
                 {selectedEditIndex === index ? (
                   <form

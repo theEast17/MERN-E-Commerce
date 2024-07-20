@@ -28,6 +28,7 @@ const Navbar = () => {
 
   const items = useSelector(selectCartItem);
 
+
   const user = useSelector(selectLoggedInUser);
 
   return (
@@ -92,9 +93,9 @@ const Navbar = () => {
                     <span className="sr-only">View notifications</span>
                     <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
                   </button>
-                  {items.length > 0 && (
+                  {items?.length > 0 && (
                     <span className="inline-flex z-10 mb-5 -ml-3 items-center rounded-full bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
-                      {items.length}
+                      {items?.length}
                     </span>
                   )}
 

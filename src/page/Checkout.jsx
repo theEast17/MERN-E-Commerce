@@ -7,6 +7,7 @@ import {
 } from "../features/Cart/cartSlice";
 import { useForm } from "react-hook-form";
 import { updateUserAsync } from "../features/Auth/authSlice";
+
 import { useState } from "react";
 import {
   addOrderAsync,
@@ -29,21 +30,22 @@ function Checkout() {
 
   const dispatch = useDispatch();
 
-  const products = useSelector(selectCartItem);
+  const Items = useSelector(selectCartItem);
+
 
   const user = useSelector(selectLoggedInUserInfoById);
 
   const currentOrder = useSelector(selectCurrentOrder);
 
-  const totalAmount = products.reduce(
+  const totalAmount = Items.reduce(
     // (amount, item) => item.price * item.quantity + amount,
-    (amount, item) => discountedPrice(item) * item.quantity + amount,
+    (amount, item) => discountedPrice(item.product) * item.quantity + amount,
     0
   );
-  const totalItems = products.reduce((total, item) => item.quantity + total, 0);
+  const totalItems = Items.reduce((total, item) => item.quantity + total, 0);
 
   const handleQuantity = (e, product) => {
-    dispatch(updateCartAsync({ ...product, quantity: +e.target.value }));
+    dispatch(updateCartAsync({ id: product.id, quantity: +e.target.value }));
   };
 
   const handleDelete = (id) => {
@@ -68,8 +70,8 @@ function Checkout() {
   const handleOrder = () => {
     if (selectedAddress && selectedPaymentMethod) {
       const order = {
-        user:user.id,
-        products,
+        user: user.id,
+        items:Items,
         totalAmount,
         totalItems,
         selectedAddress,
@@ -96,7 +98,7 @@ function Checkout() {
 
   return (
     <>
-      {!products.length && <Navigate to="/" replace={true}></Navigate>}
+      {!Items.length && <Navigate to="/" replace={true}></Navigate>}
       {currentOrder && (
         <Navigate
           to={`/order-success/${currentOrder.id}`}
@@ -428,62 +430,65 @@ function Checkout() {
                 </h1>
                 <div className="flow-root">
                   <ul role="list" className="-my-6 divide-y divide-gray-200">
-                    {products.map((product) => (
-                      <li key={product.id} className="flex py-6">
-                        <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                          <img
-                            src={product.thumbnail}
-                            alt={product.title}
-                            className="h-full w-full object-cover object-center"
-                          />
-                        </div>
+                    {Items.map((products) => {
+                      const { product } = products;
+                      return (
+                        <li key={product.id} className="flex py-6">
+                          <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                            <img
+                              src={product.thumbnail}
+                              alt={product.title}
+                              className="h-full w-full object-cover object-center"
+                            />
+                          </div>
 
-                        <div className="ml-4 flex flex-1 flex-col">
-                          <div>
-                            <div className="flex justify-between text-base font-medium text-gray-900">
-                              <h3>
-                                <Link to={`/productdetail/${product.id}`}>
-                                  {product.title}
-                                </Link>
-                              </h3>
-                              <p className="ml-4">
-                                ${discountedPrice(product)}
+                          <div className="ml-4 flex flex-1 flex-col">
+                            <div>
+                              <div className="flex justify-between text-base font-medium text-gray-900">
+                                <h3>
+                                  <Link to={`/productdetail/${product.id}`}>
+                                    {product.title}
+                                  </Link>
+                                </h3>
+                                <p className="ml-4">
+                                  ${discountedPrice(product)}
+                                </p>
+                              </div>
+                              <p className="mt-1 text-sm text-gray-500">
+                                {product.brand}
                               </p>
                             </div>
-                            <p className="mt-1 text-sm text-gray-500">
-                              {product.brand}
-                            </p>
-                          </div>
-                          <div className="flex flex-1 items-end justify-between text-sm">
-                            <div className="text-gray-500">
-                              Qty
-                              <select
-                                name="quantity"
-                                className="border ml-2 p-1"
-                                value={product.quantity}
-                                onChange={(e) => handleQuantity(e, product)}
-                              >
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                              </select>
-                            </div>
+                            <div className="flex flex-1 items-end justify-between text-sm">
+                              <div className="text-gray-500">
+                                Qty
+                                <select
+                                  name="quantity"
+                                  className="border ml-2 p-1"
+                                  value={products.quantity}
+                                  onChange={(e) => handleQuantity(e, products)}
+                                >
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                </select>
+                              </div>
 
-                            <div className="flex">
-                              <button
-                                type="button"
-                                onClick={() => handleDelete(product.id)}
-                                className="font-medium text-indigo-600 hover:text-indigo-500"
-                              >
-                                Remove
-                              </button>
+                              <div className="flex">
+                                <button
+                                  type="button"
+                                  onClick={() => handleDelete(products.id)}
+                                  className="font-medium text-indigo-600 hover:text-indigo-500"
+                                >
+                                  Remove
+                                </button>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </li>
-                    ))}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               </div>

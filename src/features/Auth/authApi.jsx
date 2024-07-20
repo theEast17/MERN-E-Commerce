@@ -17,20 +17,18 @@ export async function createUser(userData) {
 export async function checkLoggedInUser(loginInfo) {
   try {
     // by using this api endpoint you will get the whole information about the user accordint to their email id
-    const response = await api.get(`users/login`, {
-      method: "POST",
-      body: JSON.stringify(loginInfo),
-      headers: { "content-type": "application/json" },
+    const response = await api.post("users/login", loginInfo, {
+      headers: { "Content-Type": "application/json" },
     });
-    const data = response.data;
 
-    if (data) {
-      return data;
+    if(response.status===200){
+      const data = await response.data;
+      return data
     } else {
       throw new Error("user not found");
     }
   } catch (error) {
-    throw { message: error.message };
+    throw { message: error.response.data.error };
   }
 }
 

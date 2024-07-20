@@ -27,12 +27,12 @@ export async function updateCart(item) {
 }
 export async function deleteCart(id) {
   try {
-    const response = await api.delete(`cart/${id}`, {
+    const response = await api.delete(`cart/${id}`,{
       headers: { "Content-Type": "application/json" },
     });
-    return response.data;
+    return response.data.id;
   } catch (error) {
-    console.log(error);
+    throw new Error(error.response?.data?.error || error.message);
   }
 }
 
