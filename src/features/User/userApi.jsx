@@ -5,18 +5,18 @@ const api = axios.create({
 });
 
 
-export async function getLoggedInUserOrdersById(userId) {
+export async function getLoggedInUserOrdersById() {
   try {
-    const response = await api.get(`orders?user=${userId}`)
+    const response = await api.get(`orders/own`)
     return response.data;
   } catch (error) {
     console.log(error);
   }
 }
 
-export async function getLoggedInUserById(userId){
+export async function getLoggedInUserById(){
   try {
-    const response = await api.get(`users/${userId}`)
+    const response = await api.get(`users/own`)
     return response.data;
   } catch (error) {
     console.log(error);

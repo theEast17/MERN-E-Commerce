@@ -4,12 +4,11 @@ import { StarIcon } from '@heroicons/react/20/solid';
 import { RadioGroup } from '@headlessui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchProductByIdAsync, selectProductById } from '../features/ProductList/productSlice';
-import { selectLoggedInUser } from '../features/Auth/authSlice';
-import { addToCartAsync } from '../features/Cart/cartSlice';
-import Navbar from '../component/Navbar'
+import { addToCartAsync } from '../../features/Cart/cartSlice';
+import Navbar from '../../component/Navbar'
+import { fetchProductByIdAsync,selectProductById } from '../../features/ProductList/productSlice';
 
-// TODO: In server data we will add colors, sizes , highlights. to each product
+
 
 const colors = [
   { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
@@ -47,10 +46,9 @@ export default function AdminProductDetails() {
 
   const params = useParams();
   const dispatch=useDispatch()
-  const user=useSelector(selectLoggedInUser)
   const handleCart=(e)=>{
     e.preventDefault()
-    dispatch(addToCartAsync({...product,quantity:1,user:user.id}))
+    dispatch(addToCartAsync({...product,quantity:1}))
   }
 
   useEffect(() => {

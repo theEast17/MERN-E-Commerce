@@ -13,15 +13,15 @@ const initialState = {
 
 export const getLoggedInUserOrdersByIdAsync = createAsyncThunk(
   "user/getLoggedInUserOrdersById",
-  async (id) => {
-    const response = await getLoggedInUserOrdersById(id);
+  async () => {
+    const response = await getLoggedInUserOrdersById();
     return response;
   }
 );
 export const getLoggedInUserByIdAsync = createAsyncThunk(
   "user/getLoggedInUserById",
-  async (userId) => {
-    const response = await getLoggedInUserById(userId);
+  async () => {
+    const response = await getLoggedInUserById();
     return response;
   }
 );

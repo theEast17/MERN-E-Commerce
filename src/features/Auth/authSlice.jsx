@@ -3,7 +3,7 @@ import { checkLoggedInUser, createUser, signOut } from './authApi'
 import { updateUser } from '../User/userApi'
 
 const initialState = {
-    loggedInUser:null,
+    loggedInUserToken:null,
     status:'idle'
   }
 
@@ -34,7 +34,7 @@ const initialState = {
     async(userId)=>{
       const response =await signOut(userId)
       return response.data
-    }
+    } 
   )
 
   export const userSlice = createSlice({
@@ -46,14 +46,14 @@ const initialState = {
       })
       builder.addCase(createUserAsync.fulfilled,(state,action)=>{
         state.status='idle';
-        state.loggedInUser=action.payload
+        state.loggedInUserToken=action.payload
       })
       builder.addCase(checkLoggedInUserAsync.pending,(state)=>{
         state.status='loading'
       })
       builder.addCase(checkLoggedInUserAsync.fulfilled,(state,action)=>{
         state.status='idle';
-        state.loggedInUser=action.payload
+        state.loggedInUserToken=action.payload
       })
       .addCase(checkLoggedInUserAsync.rejected, (state, action) => {
         state.status = 'idle';
@@ -65,21 +65,21 @@ const initialState = {
       builder.addCase(updateUserAsync.fulfilled,(state,action)=>{
         state.status='idle';
         // all the infirmation about the user including addresses
-        state.loggedInUser=action.payload
+        state.loggedInUserToken=action.payload
       })
       builder.addCase(signOutAsync.pending,(state)=>{
         state.status='loading';
       })
       builder.addCase(signOutAsync.fulfilled,(state)=>{
         state.status='idle';
-        state.loggedInUser=null
+        state.loggedInUserToken=null
       })
       
     }
 })
 
 export const selectLoggedInUser=(state)=>{
-    return state.auth.loggedInUser
+    return state.auth.loggedInUserToken
 }
 
 export const selectError = (state)=>state.auth.error;

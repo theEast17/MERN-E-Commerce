@@ -73,20 +73,9 @@ function AdminOrders() {
                 <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                   <th
                     className="py-3 px-6 text-left cursor-pointer"
-                    onClick={(e) =>
-                      handleSort({
-                        sort: 'id',
-                        order: sort?._order === 'asc' ? 'desc' : 'asc',
-                      })
-                    }
                   >
                     Order# {' '}
-                    {sort._sort === 'id' &&
-                      (sort._order === 'asc' ? (
-                        <ArrowUpIcon className="w-4 h-4 inline"></ArrowUpIcon>
-                      ) : (
-                        <ArrowDownIcon className="w-4 h-4 inline"></ArrowDownIcon>
-                      ))}
+                   
                   </th>
                   <th className="py-3 px-6 text-left">Items</th>
                   <th
@@ -121,17 +110,17 @@ function AdminOrders() {
                       </div>
                     </td>
                     <td className="py-3 px-6 text-left">
-                      {order.products?.map((item) => (
+                      {order.items?.map((item) => (
                         <div className="flex items-center" key={item}>
                           <div className="mr-2">
                             <img
                               className="w-6 h-6 rounded-full"
-                              src={item.thumbnail}
+                              src={item.product.thumbnail}
                             />
                           </div>
                           <span>
-                            {item.title} - #{item.quantity} - $
-                            {discountedPrice(item)}
+                            {item.product.title} - #{item.quantity} - $
+                            {discountedPrice(item.product)}
                           </span>
                         </div>
                       ))}
@@ -146,11 +135,11 @@ function AdminOrders() {
                         <div>
                           <strong>{order.selectedAddress.name}</strong>,
                         </div>
-                        <div>{order.selectedAddress.street},</div>
-                        <div>{order.selectedAddress.city}, </div>
-                        <div>{order.selectedAddress.region}, </div>
-                        <div>{order.selectedAddress.postalCode}, </div>
-                        <div>{order.selectedAddress.phone}, </div>
+                        <div>{order.selectedAddress[0].street},</div>
+                        <div>{order.selectedAddress[0].city}, </div>
+                        <div>{order.selectedAddress[0].region}, </div>
+                        <div>{order.selectedAddress[0].postalCode}, </div>
+                        <div>{order.selectedAddress[0].phone}, </div>
                       </div>
                     </td>
                     <td className="py-3 px-6 text-center">

@@ -28,6 +28,7 @@ import {
   fetchProductsByFilterAsync,
   selectAllBrands,
   selectAllCategories,
+  selectTotalItems,
 } from "../../features/ProductList/productSlice";
 import Navbar from "../../component/Navbar";
 import { ITEMS_PER_PAGE } from "../../app/constant";
@@ -51,18 +52,18 @@ export default function AdminHome() {
 
   const brands = useSelector(selectAllBrands);
   const categories = useSelector(selectAllCategories);
-  const totalItems = 100;
+  const totalItems = useSelector(selectTotalItems)
 
   const filters = [
     {
       id: "category",
       name: "Category",
-      options: categories,
+      options: categories.categories,
     },
     {
       id: "brands",
       name: "Brands",
-      options: brands,
+      options: brands.brands,
     },
   ];
 
@@ -93,7 +94,7 @@ export default function AdminHome() {
   };
 
   useEffect(() => {
-    const pagination = { _page: page, limit: ITEMS_PER_PAGE };
+    const pagination = { _page: page,_limit: ITEMS_PER_PAGE };
     dispatch(fetchBrandsAsync());
     dispatch(fetchCategoriesAsync());
     dispatch(fetchProductsByFilterAsync({ filter, sort, pagination }));
@@ -195,7 +196,7 @@ function MobileDevice({
                       </h3>
                       <DisclosurePanel className="pt-6">
                         <div className="space-y-6">
-                          {section.options.map((option, optionIdx) => (
+                          {section.options?.map((option, optionIdx) => (
                             <div
                               key={option.value}
                               className="flex items-center"
@@ -207,7 +208,7 @@ function MobileDevice({
                                 type="checkbox"
                                 defaultChecked={option.checked}
                                 onChange={(e) =>
-                                  handleFilter(e, section.id, option.value)
+                                  handleFilter(e, section, option)
                                 }
                                 className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                               />
@@ -346,7 +347,7 @@ function DesktopDevice({
                       </h3>
                       <DisclosurePanel className="pt-6">
                         <div className="space-y-4">
-                          {section.options.map((option, optionIdx) => (
+                          {section.options?.map((option, optionIdx) => (
                             <div
                               key={option.value}
                               className="flex items-center"
@@ -358,7 +359,7 @@ function DesktopDevice({
                                 type="checkbox"
                                 defaultChecked={option.checked}
                                 onChange={(e) =>
-                                  handleFilter(e, section.id, option.value)
+                                  handleFilter(e, section, option)
                                 }
                                 className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                               />

@@ -199,8 +199,8 @@ export function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     if (user) {
-      dispatch(fetchItemByUserIdAsync(user.id));
-      dispatch(getLoggedInUserByIdAsync(user.id));
+      dispatch(fetchItemByUserIdAsync());
+      dispatch(getLoggedInUserByIdAsync());
     }
   }, [dispatch, user]);
 

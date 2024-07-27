@@ -36,9 +36,9 @@ export async function deleteCart(id) {
   }
 }
 
-export async function fetchItemByUserId(userId) {
+export async function fetchItemByUserId() {
   try {
-    const response = await api.get(`cart?user=${userId}`);
+    const response = await api.get(`cart`);
     const data = response.data;
     return data
   } catch (error) {
@@ -46,8 +46,8 @@ export async function fetchItemByUserId(userId) {
   }
 }
 
-export async function resetCart(id){
-  const response = await fetchItemByUserId(id)
+export async function resetCart(){
+  const response = await fetchItemByUserId()
   const items=await response
   for(let item of items){
     await deleteCart(item.id)

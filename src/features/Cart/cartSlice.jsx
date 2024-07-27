@@ -22,8 +22,8 @@ export const addToCartAsync = createAsyncThunk(
 
 export const fetchItemByUserIdAsync = createAsyncThunk(
   "user/fetchItemByUserId",
-  async (userId) => {
-    const response = await fetchItemByUserId(userId);
+  async () => {
+    const response = await fetchItemByUserId();
     return response;
   }
 );
@@ -42,8 +42,8 @@ export const deleteCartAsync = createAsyncThunk(
     return response;
   }
 );
-export const resetCartAsync = createAsyncThunk("user/resetCart", async (id) => {
-  const response = await resetCart(id);
+export const resetCartAsync = createAsyncThunk("user/resetCart", async () => {
+  const response = await resetCart();
   return response;
 });
 

@@ -176,7 +176,7 @@ function AdminProductForm() {
                     })}
                   >
                     <option value="">--choose brand--</option>
-                    {brands.map((brand) => (
+                    {brands.brands?.map((brand) => (
                       <option key={brand} value={brand.value}>
                         {brand.label}
                       </option>
@@ -200,7 +200,7 @@ function AdminProductForm() {
                     })}
                   >
                     <option value="">--choose category--</option>
-                    {categories.map((category) => (
+                    {categories.categories?.map((category) => (
                       <option key={category} value={category.value}>
                         {category.label}
                       </option>

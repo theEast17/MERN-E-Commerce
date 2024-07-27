@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { useParams } from 'react-router-dom';
 import { fetchProductByIdAsync, selectProductById } from '../features/ProductList/productSlice';
-import { selectLoggedInUser } from '../features/Auth/authSlice';
 import { addToCartAsync, selectCartItem } from '../features/Cart/cartSlice';
 import Navbar from '../component/Navbar'
 import { discountedPrice } from '../app/constant';
@@ -51,8 +50,6 @@ export default function ProductDetail() {
 
   const params = useParams();
   const dispatch=useDispatch()
-  const user=useSelector(selectLoggedInUser)
-
 
   const items =useSelector(selectCartItem)
 
@@ -63,7 +60,6 @@ export default function ProductDetail() {
       const newItem = {
         product: product.id,
         quantity: 1,
-        user:user.id
       };
       dispatch(addToCartAsync(newItem));
       toast.success("Item added to the cart!");

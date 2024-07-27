@@ -14,15 +14,15 @@ export async function createUser(userData) {
   return data;
 }
 
+
 export async function checkLoggedInUser(loginInfo) {
   try {
-    // by using this api endpoint you will get the whole information about the user accordint to their email id
     const response = await api.post("users/login", loginInfo, {
       headers: { "Content-Type": "application/json" },
     });
 
-    if(response.status===200){
-      const data = await response.data;
+    if(response.status===201){
+      const data =await response.data;
       return data
     } else {
       throw new Error("user not found");
