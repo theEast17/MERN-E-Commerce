@@ -112,7 +112,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/orders",
+    path: "/my-orders",
     element: (
       <Suspense fallback={<Loader />}>
         <Protected>
