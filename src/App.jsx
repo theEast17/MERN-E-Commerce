@@ -11,6 +11,7 @@ import {
 } from "./features/Auth/authSlice";
 import ProtectedAdmin from "./features/Auth/ProtectedAdmin";
 import { getLoggedInUserByIdAsync } from "./features/User/userSlice";
+import ResetPassword from "./page/ResetPassword";
 
 const Home = lazy(() => import("./page/Home"));
 const Login = lazy(() => import("./page/Login"));
@@ -146,6 +147,14 @@ const router = createBrowserRouter([
     element: (
       <Suspense fallback={<Loader />}>
         <ForgotPassword />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/reset-password",
+    element: (
+      <Suspense fallback={<Loader />}>
+        <ResetPassword />
       </Suspense>
     ),
   },

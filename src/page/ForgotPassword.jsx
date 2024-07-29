@@ -3,9 +3,11 @@ import logo from "../assets/logo.svg";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  checkLoggedInUserAsync,
+  // checkLoggedInUserAsync,
   selectLoggedInUser,
   selectError,
+  resetPasswordRequestAsync,
+  selectMailSent,
 } from "../features/Auth/authSlice";
 import { Navigate } from "react-router-dom";
 export default function ForgotPassword() {
@@ -17,11 +19,12 @@ export default function ForgotPassword() {
 
   const error = useSelector(selectError);
   const user = useSelector(selectLoggedInUser);
-//   const dispatch = useDispatch();
+  const mailSent=useSelector(selectMailSent)
+  const dispatch = useDispatch();
   const onSubmit = (data) => {
-    console.log(data)
-    // dispatch(checkLoggedInUserAsync(data));
+   dispatch(resetPasswordRequestAsync(data.email))
   };
+  console.log(mailSent)
   return (
     <>
       {user && <Navigate to="/" replace={true}></Navigate>}
@@ -32,6 +35,9 @@ export default function ForgotPassword() {
             Enter your email to reset password
           </h2>
         </div>
+        {
+          mailSent && <p className="text-green-400">Mail Sent!</p>
+        }
 
         {error && <p className="text-red-400 underline mt-2 mx-auto font-bold capitalize -tracking-tighter">{error.message}</p>}
 

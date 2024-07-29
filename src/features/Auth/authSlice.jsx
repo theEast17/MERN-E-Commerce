@@ -1,11 +1,13 @@
 import { createSlice,createAsyncThunk } from '@reduxjs/toolkit'
-import { checkAuth, checkLoggedInUser, createUser, signOut } from './authApi'
+import { checkAuth, checkLoggedInUser, createUser, resetPassword, resetPasswordRequest, signOut } from './authApi'
 import { updateUser } from '../User/userApi'
 
 const initialState = {
     loggedInUserToken:null,
     status:'idle',
-    userChecked:false
+    userChecked:false,
+    mailSent:false,
+    passwordReset:false
   }
 
   export const createUserAsync=createAsyncThunk(
@@ -35,6 +37,20 @@ const initialState = {
     'user/checkAuth',
     async()=>{
       const response =await checkAuth()
+      return response
+    }
+  )
+  export const resetPasswordRequestAsync=createAsyncThunk(
+    'user/resetPasswordRequest',
+    async(email)=>{
+      const response =await resetPasswordRequest(email)
+      return response
+    }
+  )
+  export const resetPasswordAsync=createAsyncThunk(
+    'user/resetPassword',
+    async(data)=>{
+      const response =await resetPassword(data)
       return response
     }
   )
@@ -93,6 +109,20 @@ const initialState = {
         state.status='idle';
         state.loggedInUserToken=action.payload
       })
+      builder.addCase(resetPasswordRequestAsync.pending,(state)=>{
+        state.status='loading';
+      })
+      builder.addCase(resetPasswordRequestAsync.fulfilled,(state)=>{
+        state.status='idle';
+        state.mailSent=true
+      })
+      builder.addCase(resetPasswordAsync.pending,(state)=>{
+        state.status='loading';
+      })
+      builder.addCase(resetPasswordAsync.fulfilled,(state)=>{
+        state.status='idle';
+        state.passwordReset=true
+      })
       builder.addCase(signOutAsync.pending,(state)=>{
         state.status='loading';
       })
@@ -109,6 +139,12 @@ export const selectLoggedInUser=(state)=>{
 }
 export const selectUserChecked=(state)=>{
     return state.auth.userChecked
+}
+export const selectMailSent=(state)=>{
+    return state.auth.mailSent
+}
+export const selectPasswordReset=(state)=>{
+    return state.auth.passwordReset
 }
 
 export const selectError = (state)=>state.auth.error;
