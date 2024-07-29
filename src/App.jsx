@@ -4,10 +4,13 @@ import Loader from "./component/Loader";
 import Protected from "./features/Auth/Protected";
 import { fetchItemByUserIdAsync } from "./features/Cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { selectLoggedInUser } from "./features/Auth/authSlice";
-import { getLoggedInUserByIdAsync } from "./features/User/userSlice";
+import {
+  checkAuthAsync,
+  // checkLoggedInUserAsync,
+  selectLoggedInUser,
+} from "./features/Auth/authSlice";
 import ProtectedAdmin from "./features/Auth/ProtectedAdmin";
-
+import { getLoggedInUserByIdAsync } from "./features/User/userSlice";
 
 const Home = lazy(() => import("./page/Home"));
 const Login = lazy(() => import("./page/Login"));
@@ -21,12 +24,15 @@ const UserOrders = lazy(() => import("./page/UserOrders"));
 const UserProfile = lazy(() => import("./page/UserProfile"));
 const Logout = lazy(() => import("./component/Logout"));
 const ForgotPassword = lazy(() => import("./page/ForgotPassword"));
+const StripeCheckout = lazy(() => import("./page/StripeCheckout"));
 const AdminHome = lazy(() => import("./page/AdminPages/AdminHome"));
-const AdminProductDetails = lazy(() => import("./page/AdminPages/AdminProductDetails"));
-const AdminProductForm = lazy(() => import("./page/AdminPages/AdminProductForm"));
+const AdminProductDetails = lazy(() =>
+  import("./page/AdminPages/AdminProductDetails")
+);
+const AdminProductForm = lazy(() =>
+  import("./page/AdminPages/AdminProductForm")
+);
 const AdminOrders = lazy(() => import("./page/AdminPages/AdminOrders"));
-
-
 
 const router = createBrowserRouter([
   {
@@ -91,6 +97,16 @@ const router = createBrowserRouter([
       <Suspense fallback={<Loader />}>
         <Protected>
           <OrderSuccess />
+        </Protected>
+      </Suspense>
+    ),
+  },
+  {
+    path: "/stripe-checkout/",
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Protected>
+          <StripeCheckout />
         </Protected>
       </Suspense>
     ),
@@ -168,7 +184,7 @@ const router = createBrowserRouter([
     element: (
       <Suspense fallback={<Loader />}>
         <ProtectedAdmin>
-        <AdminProductForm />
+          <AdminProductForm />
         </ProtectedAdmin>
       </Suspense>
     ),
@@ -178,7 +194,7 @@ const router = createBrowserRouter([
     element: (
       <Suspense fallback={<Loader />}>
         <ProtectedAdmin>
-        <AdminOrders />
+          <AdminOrders />
         </ProtectedAdmin>
       </Suspense>
     ),
@@ -195,8 +211,12 @@ const router = createBrowserRouter([
 
 export function App() {
   const user = useSelector(selectLoggedInUser);
-
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkAuthAsync());
+  }, [dispatch]);
+
   useEffect(() => {
     if (user) {
       dispatch(fetchItemByUserIdAsync());

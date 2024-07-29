@@ -32,6 +32,18 @@ export async function checkLoggedInUser(loginInfo) {
   }
 }
 
+export async function checkAuth(){
+  try {
+    const response = await api.get("users/check", { withCredentials: true });
+    const data=await response.json()
+    return data
+
+  } catch (error) {
+    throw { message: error.response.data.error };
+  }
+}
+
+// eslint-disable-next-line no-unused-vars
 export async function signOut(userId) {
   const response = `signout`;
   return response;

@@ -6,6 +6,7 @@ import {
   checkLoggedInUserAsync,
   selectLoggedInUser,
   selectError,
+  selectUserChecked,
 } from "../features/Auth/authSlice";
 import { Navigate } from "react-router-dom";
 export default function Login() {
@@ -16,6 +17,7 @@ export default function Login() {
   } = useForm();
 
   const error = useSelector(selectError);
+  const userChecked=useSelector(selectUserChecked)
   const user = useSelector(selectLoggedInUser);
   const dispatch = useDispatch();
   const onSubmit = (data) => {
@@ -23,8 +25,8 @@ export default function Login() {
   };
   return (
     <>
-      {user && user.role==='user' && <Navigate to="/" replace={true}></Navigate>}
-      {user && user.role==='admin' && <Navigate to="/admin" replace={true}></Navigate>}
+      {userChecked && user?.role==='user' && <Navigate to="/" replace={true}></Navigate>}
+      {userChecked && user?.role==='admin' && <Navigate to="/admin" replace={true}></Navigate>}
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img className="mx-auto h-10 w-auto" src={logo} alt="Logo" />
