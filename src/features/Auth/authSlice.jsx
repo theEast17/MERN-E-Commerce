@@ -56,12 +56,11 @@ const initialState = {
   )
 
 
-
   export const signOutAsync=createAsyncThunk(
     'user/signOut',
-    async(userId)=>{
-      const response =await signOut(userId)
-      return response.data
+    async()=>{
+      const response =await signOut()
+      return response
     } 
   )
 
