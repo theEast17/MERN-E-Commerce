@@ -61,7 +61,7 @@ export default function Hero() {
       options: categories.categories,
     },
     {
-      id: "brands",
+      id: "brand",
       name: "Brands",
       options: brands.brands,
     },

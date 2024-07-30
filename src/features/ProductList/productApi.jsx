@@ -8,10 +8,9 @@ export async function fetchProductsByFilter(filter, sort, pagination) {
   let queryString = "";
   for (let key in filter) {
     const categoryValue = filter[key];
-    // ['apple','banana']
+
     if (categoryValue.length) {
-      const lastCategoryValue = categoryValue[categoryValue.length - 1];
-      queryString += `${key}=${lastCategoryValue}&`;
+      queryString += `${key}=${categoryValue}&`;
     }
   }
   for (let key in sort) {
