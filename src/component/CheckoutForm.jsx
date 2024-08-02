@@ -57,7 +57,8 @@ export default function CheckoutForm() {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `http://localhost:5000/order-success/${currentOrder.id}`,
+        // there is a buf regarding path 
+        return_url: `http://localhost:5173/order-success/${currentOrder.id}`,
       },
     });
 
